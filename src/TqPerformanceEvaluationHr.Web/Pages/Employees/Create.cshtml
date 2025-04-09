@@ -1,0 +1,36 @@
+@page
+@model TqPerformanceEvaluationHr.Web.Pages.Employees.CreateModel
+@{
+    ViewData["Title"] = "Nuevo Empleado";
+}
+
+<h1>Nuevo Empleado</h1>
+
+<form method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Employee.Id" />
+
+    <div class="mb-3">
+        <label asp-for="Employee.FullName" class="form-label"></label>
+        <input asp-for="Employee.FullName" class="form-control" />
+        <span asp-validation-for="Employee.FullName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Employee.Email" class="form-label"></label>
+        <input asp-for="Employee.Email" class="form-control" />
+        <span asp-validation-for="Employee.Email" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Employee.PositionId" class="form-label">Cargo</label>
+        <select asp-for="Employee.PositionId" class="form-select" asp-items="Model.Positions">
+            <option value="">Seleccione un cargo</option>
+        </select>
+        <span asp-validation-for="Employee.PositionId" class="text-danger"></span>
+        <div asp-validation-summary="All" class="text-danger"></div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Crear</button>
+</form>
+

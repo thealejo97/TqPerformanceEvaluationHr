@@ -1,0 +1,32 @@
+@page
+@model TqPerformanceEvaluationHr.Web.Pages.Employees.IndexModel
+@{
+    ViewData["Title"] = "Empleados";
+}
+
+<h1>Empleados</h1>
+
+<p>
+    <a asp-page="Create" class="btn btn-primary">Nuevo Empleado</a>
+</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Cargo</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Employees) {
+        <tr>
+            <td>@item.FullName</td>
+            <td>@item.Position?.Name</td>
+            <td>
+                <a asp-page="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a asp-page="Delete" asp-route-id="@item.Id">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

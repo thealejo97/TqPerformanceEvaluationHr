@@ -1,10 +1,10 @@
 @page "{id:int}"
 @model TqPerformanceEvaluationHr.Web.Pages.EvaluationModels.EditModel
 @{
-    ViewData["Title"] = "Editar Modelo Evaluativo";
+    ViewData["Title"] = "Edit Evaluation Model";
 }
 
-<h1>Editar Modelo Evaluativo</h1>
+<h1>Edit Evaluation Model</h1>
 
 <form method="post">
     <input type="hidden" asp-for="EvaluationModel.Id" />
@@ -17,6 +17,6 @@
         <label asp-for="EvaluationModel.Description" class="form-label"></label>
         <textarea asp-for="EvaluationModel.Description" class="form-control"></textarea>
     </div>
-    <button type="submit" class="btn btn-primary">Guardar cambios</button>
-    <a asp-page="Index" class="btn btn-secondary">Cancelar</a>
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+    <a asp-page="Index" class="btn btn-secondary">Cancel</a>
 </form>

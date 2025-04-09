@@ -1,0 +1,17 @@
+@page "{id:int}"
+@model TqPerformanceEvaluationHr.Web.Pages.Employees.DeleteModel
+@{
+    ViewData["Title"] = "Eliminar Empleado";
+}
+
+<h1>Eliminar Empleado</h1>
+
+<h3>¿Está seguro que desea eliminar este empleado?</h3>
+<div>
+    <h4>@Model.Employee.FullName</h4>
+    <form method="post">
+        <input type="hidden" asp-for="Employee.Id" />
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <a asp-page="Index" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>

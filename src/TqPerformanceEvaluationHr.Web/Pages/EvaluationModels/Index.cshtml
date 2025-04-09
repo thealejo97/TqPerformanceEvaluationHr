@@ -1,20 +1,20 @@
 @page
 @model TqPerformanceEvaluationHr.Web.Pages.EvaluationModels.IndexModel
 @{
-    ViewData["Title"] = "Modelos Evaluativos";
+    ViewData["Title"] = "Evaluation Models";
 }
 
-<h1>Modelos Evaluativos</h1>
+<h1>Evaluation Models</h1>
 
 <p>
-    <a class="btn btn-primary" asp-page="Create">Crear nuevo</a>
+    <a class="btn btn-primary" asp-page="Create">Create new</a>
 </p>
 
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th>Nombre</th>
-            <th>Descripción</th>
+            <th>Name</th>
+            <th>Description</th>
             <th></th>
         </tr>
     </thead>
@@ -25,8 +25,8 @@
             <td>@item.Name</td>
             <td>@item.Description</td>
             <td>
-                <a asp-page="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Editar</a>
-                <a asp-page="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Eliminar</a>
+                <a asp-page="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Edit</a>
+                <a asp-page="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Delete</a>
             </td>
         </tr>
 }
