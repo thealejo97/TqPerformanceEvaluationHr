@@ -1,86 +1,42 @@
-@page "{id:int}"
+@page
 @model TqPerformanceEvaluationHr.Web.Pages.GroupEmployees.DeleteModel
 @{
-    ViewData["Title"] = "Delete Group Employee";
+    ViewData["Title"] = "Delete Assignment";
 }
 
-<div class="container-fluid py-4">
-    <div class="row mb-4">
-        <div class="col-12">
-            <h1 class="fw-bold text-tq display-5">Delete Group Employee</h1>
-            <p class="text-muted">Are you sure you want to delete this employee assignment?</p>
-        </div>
-    </div>
-
-    <div class="card border-0 shadow-sm rounded-3">
-        <div class="card-body p-4">
-            <div asp-validation-summary="All" class="text-danger mb-4"></div>
-            
-            <div class="row mb-4">
-                <div class="col-md-6">
-                    <h5 class="mb-3 text-tq">Assignment Details</h5>
-                    <dl class="row">
-                        <dt class="col-sm-4">Employee</dt>
-                        <dd class="col-sm-8">@Model.GroupEmployee.Employee.FullName</dd>
-                        
-                        <dt class="col-sm-4">Group</dt>
-                        <dd class="col-sm-8">@Model.GroupEmployee.EvaluationGroup.Name</dd>
-                        
-                        <dt class="col-sm-4">Cycle</dt>
-                        <dd class="col-sm-8">@Model.GroupEmployee.EvaluationGroup.EvaluationCycle.Year</dd>
-                        
-                        <dt class="col-sm-4">Period</dt>
-                        <dd class="col-sm-8">
-                            @Model.GroupEmployee.EvaluationGroup.StartDate.ToString("dd/MM/yyyy") - 
-                            @Model.GroupEmployee.EvaluationGroup.EndDate.ToString("dd/MM/yyyy")
-                        </dd>
-                    </dl>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-danger text-white">
+                    <h4 class="mb-0">Delete Assignment</h4>
                 </div>
-                
-                <div class="col-md-6">
-                    @if (Model.RelatedEvaluationsCount > 0)
-                    {
-                        <div class="alert alert-danger">
-                            <h5 class="alert-heading">
-                                <i class="bi bi-exclamation-triangle-fill me-2"></i>Cannot Delete!
-                            </h5>
-                            <p>
-                                This assignment has <strong>@Model.RelatedEvaluationsCount</strong> associated evaluations.
-                                You must delete these evaluations first before removing this assignment.
-                            </p>
-                            <hr>
-                            <div class="d-grid gap-2">
-                                <a asp-page="Details" asp-route-id="@Model.GroupEmployee.Id" class="btn btn-sm btn-outline-dark">
-                                    <i class="bi bi-eye me-1"></i>View Details to See Evaluations
-                                </a>
-                            </div>
+                <div class="card-body">
+                    <h5 class="text-danger">Are you sure you want to delete this assignment?</h5>
+                    <hr />
+                    <dl class="row">
+                        <dt class="col-sm-3">Employee</dt>
+                        <dd class="col-sm-9">@Model.GroupEmployee.Employee.FullName</dd>
+
+                        <dt class="col-sm-3">Position</dt>
+                        <dd class="col-sm-9">@Model.GroupEmployee.Employee.Position.Name</dd>
+
+                        <dt class="col-sm-3">Evaluation Group</dt>
+                        <dd class="col-sm-9">@Model.GroupEmployee.EvaluationGroup.Name</dd>
+
+                        <dt class="col-sm-3">Cycle</dt>
+                        <dd class="col-sm-9">@Model.GroupEmployee.EvaluationGroup.EvaluationCycle.Year</dd>
+                    </dl>
+
+                    <form method="post">
+                        <input type="hidden" asp-for="GroupEmployee.Id" />
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+                            <button type="submit" class="btn btn-danger">Delete</button>
                         </div>
-                    }
-                    else
-                    {
-                        <div class="alert alert-warning">
-                            <h5 class="alert-heading">
-                                <i class="bi bi-exclamation-triangle-fill me-2"></i>Warning!
-                            </h5>
-                            <p class="mb-0">
-                                Deleting this assignment will permanently remove the employee from this evaluation group.
-                                This action cannot be undone.
-                            </p>
-                        </div>
-                    }
+                    </form>
                 </div>
             </div>
-            
-            <form method="post" id="deleteForm">
-                <div class="d-flex justify-content-end gap-2">
-                    <a asp-page="Index" class="btn btn-outline-secondary">
-                        <i class="bi bi-x-circle me-2"></i>Cancel
-                    </a>
-                    <button type="submit" class="btn btn-danger" @(Model.RelatedEvaluationsCount > 0 ? "disabled" : "")>
-                        <i class="bi bi-trash me-2"></i>Delete Assignment
-                    </button>
-                </div>
-            </form>
         </div>
     </div>
 </div>

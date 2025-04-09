@@ -11,7 +11,7 @@
 
     <div class="row g-4">
         <!-- Modelos de Evaluación -->
-        <div class="col-md-6 col-lg-4 col-xl">
+        <div class="col-md-6 col-lg-4 col-xl-3">
             <div class="card border-0 shadow-sm rounded-3 h-100 overflow-hidden">
                 <div class="card-body p-0">
                     <div class="d-flex h-100">
@@ -29,7 +29,7 @@
         </div>
 
         <!-- Empleados -->
-        <div class="col-md-6 col-lg-4 col-xl">
+        <div class="col-md-6 col-lg-4 col-xl-3">
             <div class="card border-0 shadow-sm rounded-3 h-100 overflow-hidden">
                 <div class="card-body p-0">
                     <div class="d-flex h-100">
@@ -39,7 +39,7 @@
                         <div class="p-3">
                             <h6 class="text-muted mb-1">Employees</h6>
                             <h2 class="fw-bold mb-0">@Model.TotalEmployees</h2>
-                            <a href="#" class="stretched-link text-decoration-none small">View details →</a>
+                            <a href="/Employees/Index" class="stretched-link text-decoration-none small">View details →</a>
                         </div>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
         </div>
 
         <!-- Posiciones -->
-        <div class="col-md-6 col-lg-4 col-xl">
+        <div class="col-md-6 col-lg-4 col-xl-3">
             <div class="card border-0 shadow-sm rounded-3 h-100 overflow-hidden">
                 <div class="card-body p-0">
                     <div class="d-flex h-100">
@@ -65,7 +65,7 @@
         </div>
 
         <!-- Cuestionarios -->
-        <div class="col-md-6 col-lg-4 col-xl">
+        <div class="col-md-6 col-lg-4 col-xl-3">
             <div class="card border-0 shadow-sm rounded-3 h-100 overflow-hidden">
                 <div class="card-body p-0">
                     <div class="d-flex h-100">
@@ -82,10 +82,8 @@
             </div>
         </div>
 
-
-
         <!-- Ciclos Activos -->
-        <div class="col-md-6 col-lg-4 col-xl">
+        <div class="col-md-6 col-lg-4 col-xl-3">
             <div class="card border-0 shadow-sm rounded-3 h-100 overflow-hidden">
                 <div class="card-body p-0">
                     <div class="d-flex h-100">
@@ -95,7 +93,61 @@
                         <div class="p-3">
                             <h6 class="text-muted mb-1">Active Cycles</h6>
                             <h2 class="fw-bold mb-0">@Model.TotalActiveCycles</h2>
-                            <a href="#" class="stretched-link text-decoration-none small">View details →</a>
+                            <a href="/EvaluationCycles/Index" class="stretched-link text-decoration-none small">View details →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grupos de Evaluación -->
+        <div class="col-md-6 col-lg-4 col-xl-3">
+            <div class="card border-0 shadow-sm rounded-3 h-100 overflow-hidden">
+                <div class="card-body p-0">
+                    <div class="d-flex h-100">
+                        <div class="bg-info text-white d-flex align-items-center justify-content-center px-4">
+                            <i class="bi bi-diagram-3 fs-1"></i>
+                        </div>
+                        <div class="p-3">
+                            <h6 class="text-muted mb-1">Evaluation Groups</h6>
+                            <h2 class="fw-bold mb-0">@Model.TotalEvaluationGroups</h2>
+                            <a href="/EvaluationGroups/Index" class="stretched-link text-decoration-none small">View details →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resultados de Evaluación -->
+        <div class="col-md-6 col-lg-4 col-xl-3">
+            <div class="card border-0 shadow-sm rounded-3 h-100 overflow-hidden">
+                <div class="card-body p-0">
+                    <div class="d-flex h-100">
+                        <div class="bg-secondary text-white d-flex align-items-center justify-content-center px-4">
+                            <i class="bi bi-graph-up fs-1"></i>
+                        </div>
+                        <div class="p-3">
+                            <h6 class="text-muted mb-1">Evaluation Results</h6>
+                            <h2 class="fw-bold mb-0">@Model.TotalEvaluationResults</h2>
+                            <a href="/EvaluationResults/Index" class="stretched-link text-decoration-none small">View details →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Asignaciones -->
+        <div class="col-md-6 col-lg-4 col-xl-3">
+            <div class="card border-0 shadow-sm rounded-3 h-100 overflow-hidden">
+                <div class="card-body p-0">
+                    <div class="d-flex h-100">
+                        <div class="bg-dark text-white d-flex align-items-center justify-content-center px-4">
+                            <i class="bi bi-person-plus fs-1"></i>
+                        </div>
+                        <div class="p-3">
+                            <h6 class="text-muted mb-1">Assignments</h6>
+                            <h2 class="fw-bold mb-0">@Model.TotalGroupEmployees</h2>
+                            <a href="/GroupEmployees/Index" class="stretched-link text-decoration-none small">View details →</a>
                         </div>
                     </div>
                 </div>
