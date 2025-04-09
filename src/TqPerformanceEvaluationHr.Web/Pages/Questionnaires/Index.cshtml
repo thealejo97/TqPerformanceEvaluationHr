@@ -4,50 +4,105 @@
     ViewData["Title"] = "Questionnaires";
 }
 
-<h1>Questionnaires</h1>
+<div class="container-fluid py-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="fw-bold text-tq display-5">Questionnaires</h1>
+            <p class="text-muted">Manage all questionnaires available in the system</p>
+        </div>
+    </div>
 
-<p>
-    <a class="btn btn-primary" asp-page="Create">Create New</a>
-</p>
+    <div class="mb-4">
+        <a class="btn btn-tq" asp-page="Create">
+            <i class="bi bi-plus-circle me-2"></i>Create New
+        </a>
+    </div>
 
-<div class="card shadow-sm">
-    <div class="card-body">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Evaluation Model</th>
-                    <th>Position</th>
-                    <th>Questions</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.Questionnaires)
-                {
+    <div class="card border-0 shadow-sm rounded-3">
+        <div class="card-body">
+            <table class="table table-striped table-hover">
+                <thead class="table-tq text-tq">
                     <tr>
-                        <td>@item.Title</td>
-                        <td>@item.EvaluationModel.Name</td>
-                        <td>@item.Position.Name</td>
-                        <td>
-                            <span class="badge bg-info rounded-pill">@item.Questions.Count</span>
-                        </td>
-                        <td>
-                            <a asp-page="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Edit</a>
-                            <a asp-page="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Details</a>
-                            <a asp-page="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Delete</a>
-                        </td>
+                        <th>Title</th>
+                        <th>Evaluation Model</th>
+                        <th>Position</th>
+                        <th>Questions</th>
+                        <th class="text-end">Actions</th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Questionnaires)
+                    {
+                        <tr>
+                            <td class="align-middle">@item.Title</td>
+                            <td class="align-middle">@item.EvaluationModel.Name</td>
+                            <td class="align-middle">@item.Position.Name</td>
+                            <td class="align-middle">
+                                <span class="badge bg-tq rounded-pill">@item.Questions.Count</span>
+                            </td>
+                            <td class="text-end">
+                                <a asp-page="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-tq">
+                                    <i class="bi bi-pencil-square me-1"></i>Edit
+                                </a>
+                                <a asp-page="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-info">
+                                    <i class="bi bi-eye me-1"></i>Details
+                                </a>
+                                <a asp-page="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">
+                                    <i class="bi bi-trash me-1"></i>Delete
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            
+            @if (!Model.Questionnaires.Any())
+            {
+                <div class="alert alert-info">
+                    <i class="bi bi-info-circle me-2"></i>No questionnaires have been created yet. Use the "Create New" button to add one.
+                </div>
+            }
+        </div>
     </div>
 </div>
 
-@if (!Model.Questionnaires.Any())
-{
-    <div class="alert alert-info mt-4">
-        <i class="bi bi-info-circle me-2"></i>
-        No questionnaires have been created yet. Use the "Create New" button to add one.
-    </div>
-} 
+<style>
+    .text-tq {
+        color: #004b99 !important;
+    }
+    
+    .btn-tq {
+        background-color: #004b99;
+        border-color: #004b99;
+        color: white;
+    }
+    
+    .btn-tq:hover {
+        background-color: #003366;
+        border-color: #003366;
+        color: white;
+    }
+    
+    .btn-outline-tq {
+        color: #004b99;
+        border-color: #004b99;
+    }
+    
+    .btn-outline-tq:hover {
+        background-color: #004b99;
+        border-color: #004b99;
+        color: white;
+    }
+    
+    .table-tq {
+        background-color: rgba(0, 75, 153, 0.1);
+    }
+    
+    .bg-tq {
+        background-color: #004b99 !important;
+    }
+    
+    .table-hover tbody tr:hover {
+        background-color: rgba(0, 75, 153, 0.05);
+    }
+</style> 
