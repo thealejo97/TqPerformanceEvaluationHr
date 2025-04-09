@@ -18,6 +18,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /src/src/TqPerformanceEvaluationHr.Web
 build_property._RazorSourceGeneratorDebug = 
 
+[/src/src/TqPerformanceEvaluationHr.Web/Pages/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWNjb3VudC9Mb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/src/src/TqPerformanceEvaluationHr.Web/Pages/Employees/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRW1wbG95ZWVzL0NyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

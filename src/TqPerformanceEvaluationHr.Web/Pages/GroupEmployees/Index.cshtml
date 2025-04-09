@@ -22,7 +22,7 @@
                 </div>
             </div>
 
-            @if (Model.GroupEmployees.Any())
+            @if (Model.GroupEmployees != null && Model.GroupEmployees.Any())
             {
                 <div class="table-responsive">
                     <table class="table table-hover">
@@ -40,12 +40,19 @@
                             @foreach (var assignment in Model.GroupEmployees)
                             {
                                 <tr>
-                                    <td>@assignment.Employee.FullName</td>
-                                    <td>@assignment.Employee.Position.Name</td>
-                                    <td>@assignment.EvaluationGroup.Name</td>
-                                    <td>@assignment.EvaluationGroup.EvaluationCycle.Year</td>
+                                    <td>@(assignment.Employee?.FullName ?? "N/A")</td>
+                                    <td>@(assignment.Employee?.Position?.Name ?? "N/A")</td>
+                                    <td>@(assignment.EvaluationGroup?.Name ?? "N/A")</td>
+                                    <td>@(assignment.EvaluationGroup?.EvaluationCycle?.Year.ToString() ?? "N/A")</td>
                                     <td>
-                                        <span class="badge bg-success">Active</span>
+                                        @if (assignment.EvaluationGroup?.EvaluationCycle?.IsActive == true)
+                                        {
+                                            <span class="badge bg-success">Active</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-secondary">Inactive</span>
+                                        }
                                     </td>
                                     <td>
                                         <div class="btn-group">

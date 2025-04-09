@@ -25,9 +25,6 @@ public class CreateModel : PageModel
     public List<SelectListItem> EvaluationGroups { get; set; } = new();
     public List<SelectListItem> Employees { get; set; } = new();
 
-    [BindProperty]
-    public GroupEmployee GroupEmployee { get; set; } = new();
-
     public class InputModel
     {
         [Required(ErrorMessage = "Evaluation group is required")]
@@ -106,10 +103,14 @@ public class CreateModel : PageModel
                 return Page();
             }
 
-            GroupEmployee.EvaluationGroupId = Input.EvaluationGroupId;
-            GroupEmployee.EmployeeId = Input.EmployeeId;
+            // Create new GroupEmployee
+            var groupEmployee = new GroupEmployee
+            {
+                EvaluationGroupId = Input.EvaluationGroupId,
+                EmployeeId = Input.EmployeeId
+            };
 
-            _context.GroupEmployees.Add(GroupEmployee);
+            _context.GroupEmployees.Add(groupEmployee);
             await _context.SaveChangesAsync();
 
             _logger.LogInformation("Assignment created successfully: Employee {EmployeeId}, Group {GroupId}", 
