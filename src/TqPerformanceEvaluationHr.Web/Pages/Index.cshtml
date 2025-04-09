@@ -1,38 +1,100 @@
 ﻿@page
 @model TqPerformanceEvaluationHr.Web.Pages.IndexModel
 
-<h1 class="mt-4">Dashboard</h1>
+<div class="container-fluid py-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="fw-bold text-primary display-5">Dashboard</h1>
+            <p class="text-muted">Resumen del sistema de evaluación de desempeño</p>
+        </div>
+    </div>
 
-<div class="row mt-4">
-    <div class="col-md-3">
-        <div class="card text-white bg-primary mb-3">
-            <div class="card-header">Modelos de Evaluación</div>
-            <div class="card-body">
-                <h5 class="card-title">@Model.TotalEvaluationModels</h5>
+    <div class="row g-4">
+        <!-- Modelos de Evaluación -->
+        <div class="col-md-6 col-lg-3">
+            <div class="card border-0 shadow-sm rounded-3 h-100 overflow-hidden">
+                <div class="card-body p-0">
+                    <div class="d-flex h-100">
+                        <div class="bg-primary text-white d-flex align-items-center justify-content-center px-4">
+                            <i class="bi bi-file-earmark-text fs-1"></i>
+                        </div>
+                        <div class="p-3">
+                            <h6 class="text-muted mb-1">Modelos de Evaluación</h6>
+                            <h2 class="fw-bold mb-0">@Model.TotalEvaluationModels</h2>
+                            <a href="/EvaluationModels/Index" class="stretched-link text-decoration-none small">Ver detalles →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Empleados -->
+        <div class="col-md-6 col-lg-3">
+            <div class="card border-0 shadow-sm rounded-3 h-100 overflow-hidden">
+                <div class="card-body p-0">
+                    <div class="d-flex h-100">
+                        <div class="bg-success text-white d-flex align-items-center justify-content-center px-4">
+                            <i class="bi bi-people fs-1"></i>
+                        </div>
+                        <div class="p-3">
+                            <h6 class="text-muted mb-1">Empleados</h6>
+                            <h2 class="fw-bold mb-0">@Model.TotalEmployees</h2>
+                            <a href="#" class="stretched-link text-decoration-none small">Ver detalles →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Evaluaciones -->
+        <div class="col-md-6 col-lg-3">
+            <div class="card border-0 shadow-sm rounded-3 h-100 overflow-hidden">
+                <div class="card-body p-0">
+                    <div class="d-flex h-100">
+                        <div class="bg-info text-white d-flex align-items-center justify-content-center px-4">
+                            <i class="bi bi-clipboard-data fs-1"></i>
+                        </div>
+                        <div class="p-3">
+                            <h6 class="text-muted mb-1">Evaluaciones</h6>
+                            <h2 class="fw-bold mb-0">@Model.TotalEvaluations</h2>
+                            <a href="/Evaluations/Index" class="stretched-link text-decoration-none small">Ver detalles →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ciclos Activos -->
+        <div class="col-md-6 col-lg-3">
+            <div class="card border-0 shadow-sm rounded-3 h-100 overflow-hidden">
+                <div class="card-body p-0">
+                    <div class="d-flex h-100">
+                        <div class="bg-warning text-white d-flex align-items-center justify-content-center px-4">
+                            <i class="bi bi-calendar-check fs-1"></i>
+                        </div>
+                        <div class="p-3">
+                            <h6 class="text-muted mb-1">Ciclos Activos</h6>
+                            <h2 class="fw-bold mb-0">@Model.TotalActiveCycles</h2>
+                            <a href="#" class="stretched-link text-decoration-none small">Ver detalles →</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-md-3">
-        <div class="card text-white bg-success mb-3">
-            <div class="card-header">Empleados</div>
-            <div class="card-body">
-                <h5 class="card-title">@Model.TotalEmployees</h5>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card text-white bg-info mb-3">
-            <div class="card-header">Evaluaciones</div>
-            <div class="card-body">
-                <h5 class="card-title">@Model.TotalEvaluations</h5>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="card text-white bg-warning mb-3">
-            <div class="card-header">Ciclos Activos</div>
-            <div class="card-body">
-                <h5 class="card-title">@Model.TotalActiveCycles</h5>
+    
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm rounded-3">
+                <div class="card-body p-4">
+                    <h4 class="mb-4">Estado del sistema</h4>
+                    <div class="alert alert-info d-flex align-items-center" role="alert">
+                        <i class="bi bi-info-circle-fill me-2"></i>
+                        <div>
+                            Bienvenido al sistema de evaluación de desempeño TQ.
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
