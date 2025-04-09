@@ -1,0 +1,12 @@
+C:\Users\usuario\Desktop\tq\TqPerformanceEvaluationHr\src\TqPerformanceEvaluationHr.Domain\bin\Debug\net8.0\TqPerformanceEvaluationHr.Domain.deps.json
+C:\Users\usuario\Desktop\tq\TqPerformanceEvaluationHr\src\TqPerformanceEvaluationHr.Domain\bin\Debug\net8.0\TqPerformanceEvaluationHr.Domain.dll
+C:\Users\usuario\Desktop\tq\TqPerformanceEvaluationHr\src\TqPerformanceEvaluationHr.Domain\bin\Debug\net8.0\TqPerformanceEvaluationHr.Domain.pdb
+C:\Users\usuario\Desktop\tq\TqPerformanceEvaluationHr\src\TqPerformanceEvaluationHr.Domain\obj\Debug\net8.0\TqPerformanceEvaluationHr.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\usuario\Desktop\tq\TqPerformanceEvaluationHr\src\TqPerformanceEvaluationHr.Domain\obj\Debug\net8.0\TqPerformanceEvaluationHr.Domain.AssemblyInfoInputs.cache
+C:\Users\usuario\Desktop\tq\TqPerformanceEvaluationHr\src\TqPerformanceEvaluationHr.Domain\obj\Debug\net8.0\TqPerformanceEvaluationHr.Domain.AssemblyInfo.cs
+C:\Users\usuario\Desktop\tq\TqPerformanceEvaluationHr\src\TqPerformanceEvaluationHr.Domain\obj\Debug\net8.0\TqPerformanceEvaluationHr.Domain.csproj.CoreCompileInputs.cache
+C:\Users\usuario\Desktop\tq\TqPerformanceEvaluationHr\src\TqPerformanceEvaluationHr.Domain\obj\Debug\net8.0\TqPerformanceEvaluationHr.Domain.sourcelink.json
+C:\Users\usuario\Desktop\tq\TqPerformanceEvaluationHr\src\TqPerformanceEvaluationHr.Domain\obj\Debug\net8.0\TqPerformanceEvaluationHr.Domain.dll
+C:\Users\usuario\Desktop\tq\TqPerformanceEvaluationHr\src\TqPerformanceEvaluationHr.Domain\obj\Debug\net8.0\refint\TqPerformanceEvaluationHr.Domain.dll
+C:\Users\usuario\Desktop\tq\TqPerformanceEvaluationHr\src\TqPerformanceEvaluationHr.Domain\obj\Debug\net8.0\TqPerformanceEvaluationHr.Domain.pdb
+C:\Users\usuario\Desktop\tq\TqPerformanceEvaluationHr\src\TqPerformanceEvaluationHr.Domain\obj\Debug\net8.0\ref\TqPerformanceEvaluationHr.Domain.dll
