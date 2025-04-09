@@ -18,19 +18,39 @@ public class ByPositionModel : PageModel
 
     public async Task OnGetAsync()
     {
-        ReportData = await _context.Evaluations
+
+        var allPositions = await _context.Positions
+            .Select(p => new { p.Id, p.Name })
+            .ToListAsync();
+
+
+        var positionsWithEvaluations = await _context.Evaluations
             .Include(e => e.Employee)
                 .ThenInclude(emp => emp.Position)
             .Include(e => e.Responses)
-            .GroupBy(e => e.Employee.Position.Name)
-            .Select(g => new ReportByPositionDto
+            .Where(e => e.Responses.Any())
+            .GroupBy(e => new { e.Employee.PositionId, PositionName = e.Employee.Position.Name })
+            .Select(g => new 
             {
-                PositionName = g.Key,
-                AverageScore = g
-                    .Where(e => e.Responses.Any())
-                    .Average(e => e.Responses.Average(r => r.Score)),
+                PositionId = g.Key.PositionId,
+                PositionName = g.Key.PositionName,
+                AverageScore = g.Average(e => e.Responses.Average(r => r.Score)),
                 EvaluatedCount = g.Count()
             })
             .ToListAsync();
+
+
+        ReportData = allPositions
+            .Select(p => new ReportByPositionDto
+            {
+                PositionName = p.Name,
+        
+                AverageScore = positionsWithEvaluations
+                    .FirstOrDefault(pe => pe.PositionId == p.Id)?.AverageScore ?? 0,
+        
+                EvaluatedCount = positionsWithEvaluations
+                    .FirstOrDefault(pe => pe.PositionId == p.Id)?.EvaluatedCount ?? 0
+            })
+            .ToList();
     }
 }
