@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="h-100">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,6 +12,9 @@
     <style>
         body {
             background-color: #f8f9fa;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         .navbar-custom {
@@ -29,26 +32,40 @@
             text-decoration: underline;
         }
 
+        .main-content {
+            flex: 1 0 auto;
+        }
+
         .footer-custom {
             background-color: #e9ecef;
             color: #6c757d;
+            flex-shrink: 0;
+            padding: 1.5rem 0;
+            font-size: 0.9rem;
+            border-top: 1px solid #dee2e6;
         }
 
         .footer-custom a {
             color: #004b99;
             text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
         }
 
         .footer-custom a:hover {
             text-decoration: underline;
+            color: #003366;
         }
     </style>
 </head>
-<body>
+<body class="d-flex flex-column h-100">
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-custom shadow-sm">
         <div class="container-fluid">
-            <a class="navbar-brand fw-bold" asp-page="/Index">TQ Evaluación</a>
+            <a class="navbar-brand fw-bold" asp-page="/Index">
+                <img src="~/images/logo.png" alt="Logo TQ" height="50" class="d-inline-block align-text-top me-2">
+                
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -56,13 +73,16 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" asp-page="/Index">Inicio</a>
+                        <a class="nav-link" asp-page="/Index">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-page="/EvaluationModels/Index">Modelos Evaluativos</a>
+                        <a class="nav-link" asp-page="/EvaluationModels/Index">Evaluation Models</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" asp-page="/Reports/ByPosition">Reporte por Cargo</a>
+                        <a class="nav-link text-white" asp-page="/Reports/ByPosition">Reports per Position</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-page="/Positions/Index">Positions</a>
                     </li>
                 </ul>
                 <span class="navbar-text">
@@ -73,7 +93,7 @@
     </nav>
 
     <!-- MAIN CONTENT -->
-    <div class="container my-4">
+    <div class="container my-4 main-content">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
@@ -82,7 +102,17 @@
     <!-- FOOTER -->
     <footer class="footer-custom text-center py-3 border-top mt-auto">
         <div class="container">
-            &copy; 2025 - TQ Evaluación de Desempeño |
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2025 - TQ Evaluación de Desempeño</p>
+                </div>
+                <div class="col-md-6">
+                    <p class="mb-0 text-md-end">
+                        <a href="#" class="me-3">Política de Privacidad</a>
+                        <a href="#">Soporte</a>
+                    </p>
+                </div>
+            </div>
         </div>
     </footer>
 

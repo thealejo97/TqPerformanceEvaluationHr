@@ -1,0 +1,19 @@
+@page "{id:int}"
+@model TqPerformanceEvaluationHr.Web.Pages.Positions.EditModel
+@{
+    ViewData["Title"] = "Editar Cargo";
+}
+
+<h1>Editar Cargo</h1>
+
+<form method="post">
+    <input type="hidden" asp-for="Position.Id" />
+    <div class="form-group">
+        <label asp-for="Position.Name" class="control-label"></label>
+        <input asp-for="Position.Name" class="form-control" />
+        <span asp-validation-for="Position.Name" class="text-danger"></span>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a asp-page="Index" class="btn btn-secondary">Cancelar</a>
+</form>

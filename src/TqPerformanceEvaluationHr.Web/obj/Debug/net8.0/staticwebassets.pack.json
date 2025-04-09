@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets/favicon.ico"
     },
     {
+      "Id": "/src/src/TqPerformanceEvaluationHr.Web/wwwroot/images/logo.png",
+      "PackagePath": "staticwebassets/images/logo.png"
+    },
+    {
       "Id": "/src/src/TqPerformanceEvaluationHr.Web/wwwroot/js/site.js",
       "PackagePath": "staticwebassets/js/site.js"
     },

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "cI5Bab5Up/YR9HD65AnQlZi4jsUu3NVsqAlLbCjFMnY=",
+  "Hash": "lA5XWZyL4LSnZfzjZXUl3afJe8UVmarC2FwrjDwexjE=",
   "Source": "TqPerformanceEvaluationHr.Web",
   "BasePath": "_content/TqPerformanceEvaluationHr.Web",
   "Mode": "Default",
@@ -91,6 +91,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/favicon.ico"
+    },
+    {
+      "Identity": "/src/src/TqPerformanceEvaluationHr.Web/wwwroot/images/logo.png",
+      "SourceId": "TqPerformanceEvaluationHr.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "/src/src/TqPerformanceEvaluationHr.Web/wwwroot/",
+      "BasePath": "_content/TqPerformanceEvaluationHr.Web",
+      "RelativePath": "images/logo.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/logo.png"
     },
     {
       "Identity": "/src/src/TqPerformanceEvaluationHr.Web/wwwroot/js/site.js",

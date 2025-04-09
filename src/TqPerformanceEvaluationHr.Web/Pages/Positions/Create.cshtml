@@ -1,0 +1,18 @@
+@page
+@model TqPerformanceEvaluationHr.Web.Pages.Positions.CreateModel
+@{
+    ViewData["Title"] = "Crear Cargo";
+}
+
+<h1>Crear Cargo</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Position.Name" class="control-label"></label>
+        <input asp-for="Position.Name" class="form-control" />
+        <span asp-validation-for="Position.Name" class="text-danger"></span>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Crear</button>
+    <a asp-page="Index" class="btn btn-secondary">Cancelar</a>
+</form>
