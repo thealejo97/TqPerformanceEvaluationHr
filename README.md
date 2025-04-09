@@ -25,26 +25,32 @@ src/
 
 ---
 
-## Cómo ejecutar el proyecto con Docker
+## Cómo ejecutar la solución con Docker
 
-### Clona el repositorio y entra al directorio raíz:
+### Clona el repositorio y ejecutar la solución:
 
+```
 git clone [<repo>](https://github.com/thealejo97/TqPerformanceEvaluationHr.git)
-
-cd TqPerformanceEvaluationHr
 docker compose up --build
-docker compose up --build
+```
+## Como ejecutar migraciones
 
+Cree un servicio que hace las migraciones en la db con docker, para ejecutarlo, despues de ejecutar el up se debe ejecutar
+```
+ docker compose up --build migrator
+```
 
-La aplicación estará disponible en:
+Despues de esto la aplicacion deberia estar disponible en:
 http://localhost:5000
 
 ### Configuración de conexión a base de datos
 La cadena de conexión se encuentra en appsettings.Development.json dentro del proyecto Web:
 
+```
 "ConnectionStrings": {
   "DefaultConnection": "Host=db;Database=tq_performance;Username=postgres;Password=tq123"
 }
+```
 
 
 ## Autor

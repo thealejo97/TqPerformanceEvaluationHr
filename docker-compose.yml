@@ -15,13 +15,30 @@ services:
 
   web:
     build:
-      context: ./src/TqPerformanceEvaluationHr.Web
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./src/TqPerformanceEvaluationHr.Web/Dockerfile
     container_name: tq-web
     ports:
       - "5000:80"
     depends_on:
       - db
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=db;Database=tq_performance;Username=postgres;Password=tq123
+
+  migrator:
+    build:
+      context: .
+      dockerfile: ./src/TqPerformanceEvaluationHr.Web/Dockerfile
+      target: migrator  # ⬅️ Usa la etapa definida más abajo
+    container_name: tq-migrator
+    depends_on:
+      - db
+    working_dir: /src/src/TqPerformanceEvaluationHr.Web
+    entrypoint: >
+      dotnet ef database update
+      --project ../TqPerformanceEvaluationHr.Infrastructure
+      --startup-project .
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__DefaultConnection=Host=db;Database=tq_performance;Username=postgres;Password=tq123
