@@ -17,20 +17,25 @@ services:
     build:
       context: .
       dockerfile: ./src/TqPerformanceEvaluationHr.Web/Dockerfile
+      target: dev
     container_name: tq-web
     ports:
-      - "5000:8080"
+      - "5000:5000"
     depends_on:
       - db
+    volumes:
+      - .:/src
+    working_dir: /src
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5000
       - ConnectionStrings__DefaultConnection=Host=db;Database=tq_performance;Username=postgres;Password=tq123
 
   migrator:
     build:
       context: .
       dockerfile: ./src/TqPerformanceEvaluationHr.Web/Dockerfile
-      target: migrator  # ⬅️ Usa la etapa definida más abajo
+      target: migrator
     container_name: tq-migrator
     depends_on:
       - db
@@ -41,6 +46,7 @@ services:
       --startup-project .
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5000
       - ConnectionStrings__DefaultConnection=Host=db;Database=tq_performance;Username=postgres;Password=tq123
 
 volumes:

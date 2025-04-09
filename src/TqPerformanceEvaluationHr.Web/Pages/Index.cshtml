@@ -1,10 +1,39 @@
 ﻿@page
-@model IndexModel
-@{
-    ViewData["Title"] = "Home page";
-}
+@model TqPerformanceEvaluationHr.Web.Pages.IndexModel
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<h1 class="mt-4">Dashboard</h1>
+
+<div class="row mt-4">
+    <div class="col-md-3">
+        <div class="card text-white bg-primary mb-3">
+            <div class="card-header">Modelos de Evaluación</div>
+            <div class="card-body">
+                <h5 class="card-title">@Model.TotalEvaluationModels</h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-success mb-3">
+            <div class="card-header">Empleados</div>
+            <div class="card-body">
+                <h5 class="card-title">@Model.TotalEmployees</h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-info mb-3">
+            <div class="card-header">Evaluaciones</div>
+            <div class="card-body">
+                <h5 class="card-title">@Model.TotalEvaluations</h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-warning mb-3">
+            <div class="card-header">Ciclos Activos</div>
+            <div class="card-body">
+                <h5 class="card-title">@Model.TotalActiveCycles</h5>
+            </div>
+        </div>
+    </div>
 </div>

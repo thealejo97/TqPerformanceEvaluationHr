@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = TqPerformanceEvaluationHr.Domain
-build_property.ProjectDir = C:\Users\usuario\Desktop\tq\TqPerformanceEvaluationHr\src\TqPerformanceEvaluationHr.Domain\
+build_property.ProjectDir = /src/src/TqPerformanceEvaluationHr.Domain/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

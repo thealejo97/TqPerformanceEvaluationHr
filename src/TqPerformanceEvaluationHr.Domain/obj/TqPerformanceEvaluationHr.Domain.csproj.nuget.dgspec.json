@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\usuario\\Desktop\\tq\\TqPerformanceEvaluationHr\\src\\TqPerformanceEvaluationHr.Domain\\TqPerformanceEvaluationHr.Domain.csproj": {}
+    "/src/src/TqPerformanceEvaluationHr.Domain/TqPerformanceEvaluationHr.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\usuario\\Desktop\\tq\\TqPerformanceEvaluationHr\\src\\TqPerformanceEvaluationHr.Domain\\TqPerformanceEvaluationHr.Domain.csproj": {
+    "/src/src/TqPerformanceEvaluationHr.Domain/TqPerformanceEvaluationHr.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\usuario\\Desktop\\tq\\TqPerformanceEvaluationHr\\src\\TqPerformanceEvaluationHr.Domain\\TqPerformanceEvaluationHr.Domain.csproj",
+        "projectUniqueName": "/src/src/TqPerformanceEvaluationHr.Domain/TqPerformanceEvaluationHr.Domain.csproj",
         "projectName": "TqPerformanceEvaluationHr.Domain",
-        "projectPath": "C:\\Users\\usuario\\Desktop\\tq\\TqPerformanceEvaluationHr\\src\\TqPerformanceEvaluationHr.Domain\\TqPerformanceEvaluationHr.Domain.csproj",
-        "packagesPath": "C:\\Users\\usuario\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\usuario\\Desktop\\tq\\TqPerformanceEvaluationHr\\src\\TqPerformanceEvaluationHr.Domain\\obj\\",
+        "projectPath": "/src/src/TqPerformanceEvaluationHr.Domain/TqPerformanceEvaluationHr.Domain.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/src/src/TqPerformanceEvaluationHr.Domain/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\usuario\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/root/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -58,7 +58,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.407/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.408/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

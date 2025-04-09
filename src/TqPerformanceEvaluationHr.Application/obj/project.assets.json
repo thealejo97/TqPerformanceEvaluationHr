@@ -27,19 +27,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\usuario\\.nuget\\packages\\": {}
+    "/root/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\usuario\\Desktop\\tq\\TqPerformanceEvaluationHr\\src\\TqPerformanceEvaluationHr.Application\\TqPerformanceEvaluationHr.Application.csproj",
+      "projectUniqueName": "/src/src/TqPerformanceEvaluationHr.Application/TqPerformanceEvaluationHr.Application.csproj",
       "projectName": "TqPerformanceEvaluationHr.Application",
-      "projectPath": "C:\\Users\\usuario\\Desktop\\tq\\TqPerformanceEvaluationHr\\src\\TqPerformanceEvaluationHr.Application\\TqPerformanceEvaluationHr.Application.csproj",
-      "packagesPath": "C:\\Users\\usuario\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\usuario\\Desktop\\tq\\TqPerformanceEvaluationHr\\src\\TqPerformanceEvaluationHr.Application\\obj\\",
+      "projectPath": "/src/src/TqPerformanceEvaluationHr.Application/TqPerformanceEvaluationHr.Application.csproj",
+      "packagesPath": "/root/.nuget/packages/",
+      "outputPath": "/src/src/TqPerformanceEvaluationHr.Application/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\usuario\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/root/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -51,8 +51,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\usuario\\Desktop\\tq\\TqPerformanceEvaluationHr\\src\\TqPerformanceEvaluationHr.Domain\\TqPerformanceEvaluationHr.Domain.csproj": {
-              "projectPath": "C:\\Users\\usuario\\Desktop\\tq\\TqPerformanceEvaluationHr\\src\\TqPerformanceEvaluationHr.Domain\\TqPerformanceEvaluationHr.Domain.csproj"
+            "/src/src/TqPerformanceEvaluationHr.Domain/TqPerformanceEvaluationHr.Domain.csproj": {
+              "projectPath": "/src/src/TqPerformanceEvaluationHr.Domain/TqPerformanceEvaluationHr.Domain.csproj"
             }
           }
         }
@@ -87,7 +87,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.407/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.408/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

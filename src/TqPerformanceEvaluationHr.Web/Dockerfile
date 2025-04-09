@@ -23,3 +23,11 @@ FROM base AS final
 WORKDIR /app
 COPY --from=build /app/publish .
 ENTRYPOINT ["dotnet", "TqPerformanceEvaluationHr.Web.dll"]
+
+# Etapa para desarrollo con hot reload
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS dev
+WORKDIR /src
+COPY . .
+RUN dotnet tool install --global dotnet-ef
+ENV PATH="$PATH:/root/.dotnet/tools"
+ENTRYPOINT ["dotnet", "watch", "run", "--project", "src/TqPerformanceEvaluationHr.Web/TqPerformanceEvaluationHr.Web.csproj", "--urls", "http://0.0.0.0:5000"]
