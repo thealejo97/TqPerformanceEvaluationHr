@@ -12,6 +12,7 @@ public class IndexModel : PageModel
     public int TotalEmployees { get; set; }
     public int TotalEvaluations { get; set; }
     public int TotalActiveCycles { get; set; }
+    public int TotalPositions { get; set; }
 
     public IndexModel(AppDbContext context)
     {
@@ -24,5 +25,6 @@ public class IndexModel : PageModel
         TotalEmployees = await _context.Employees.CountAsync();
         TotalEvaluations = await _context.Evaluations.CountAsync();
         TotalActiveCycles = await _context.EvaluationCycles.CountAsync(c => c.IsActive);
+        TotalPositions = await _context.Positions.CountAsync();
     }
 }

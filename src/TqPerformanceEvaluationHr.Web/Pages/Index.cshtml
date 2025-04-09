@@ -5,13 +5,13 @@
     <div class="row mb-4">
         <div class="col-12">
             <h1 class="fw-bold text-primary display-5">Dashboard</h1>
-            <p class="text-muted">Resumen del sistema de evaluación de desempeño</p>
+            <p class="text-muted">Performance evaluation system summary</p>
         </div>
     </div>
 
     <div class="row g-4">
         <!-- Modelos de Evaluación -->
-        <div class="col-md-6 col-lg-3">
+        <div class="col-md-6 col-lg-4 col-xl">
             <div class="card border-0 shadow-sm rounded-3 h-100 overflow-hidden">
                 <div class="card-body p-0">
                     <div class="d-flex h-100">
@@ -29,7 +29,7 @@
         </div>
 
         <!-- Empleados -->
-        <div class="col-md-6 col-lg-3">
+        <div class="col-md-6 col-lg-4 col-xl">
             <div class="card border-0 shadow-sm rounded-3 h-100 overflow-hidden">
                 <div class="card-body p-0">
                     <div class="d-flex h-100">
@@ -46,8 +46,26 @@
             </div>
         </div>
 
+        <!-- Posiciones -->
+        <div class="col-md-6 col-lg-4 col-xl">
+            <div class="card border-0 shadow-sm rounded-3 h-100 overflow-hidden">
+                <div class="card-body p-0">
+                    <div class="d-flex h-100">
+                        <div class="bg-danger text-white d-flex align-items-center justify-content-center px-4">
+                            <i class="bi bi-briefcase fs-1"></i>
+                        </div>
+                        <div class="p-3">
+                            <h6 class="text-muted mb-1">Posiciones</h6>
+                            <h2 class="fw-bold mb-0">@Model.TotalPositions</h2>
+                            <a href="/Positions/Index" class="stretched-link text-decoration-none small">Ver detalles →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Evaluaciones -->
-        <div class="col-md-6 col-lg-3">
+        <div class="col-md-6 col-lg-4 col-xl">
             <div class="card border-0 shadow-sm rounded-3 h-100 overflow-hidden">
                 <div class="card-body p-0">
                     <div class="d-flex h-100">
@@ -65,7 +83,7 @@
         </div>
 
         <!-- Ciclos Activos -->
-        <div class="col-md-6 col-lg-3">
+        <div class="col-md-6 col-lg-4 col-xl">
             <div class="card border-0 shadow-sm rounded-3 h-100 overflow-hidden">
                 <div class="card-body p-0">
                     <div class="d-flex h-100">
