@@ -1,0 +1,73 @@
+@page
+@model TqPerformanceEvaluationHr.Web.Pages.EvaluationCycles.IndexModel
+@{
+    ViewData["Title"] = "Evaluation Cycles";
+}
+
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="text-tq-blue">Evaluation Cycles</h2>
+        <a asp-page="Create" class="btn btn-tq-blue">
+            <i class="fas fa-plus"></i> New Cycle
+        </a>
+    </div>
+
+    <div class="card shadow">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Year</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var cycle in Model.EvaluationCycles)
+                        {
+                            <tr>
+                                <td>@cycle.Year</td>
+                                <td>@cycle.StartDate.ToString("dd/MM/yyyy")</td>
+                                <td>@cycle.EndDate.ToString("dd/MM/yyyy")</td>
+                                <td>
+                                    <span class="badge @(cycle.IsActive ? "bg-success" : "bg-secondary")">
+                                        @(cycle.IsActive ? "Active" : "Inactive")
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <a asp-page="./Edit" asp-route-id="@cycle.Id" class="btn btn-sm btn-outline-primary">
+                                            <i class="fas fa-edit"></i> Edit
+                                        </a>
+                                        <a asp-page="./Delete" asp-route-id="@cycle.Id" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-trash"></i> Delete
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .btn-tq-blue {
+        background-color: #005f9e;
+        color: white;
+    }
+
+    .btn-tq-blue:hover {
+        background-color: #004a7c;
+        color: white;
+    }
+
+    .text-tq-blue {
+        color: #005f9e;
+    }
+</style> 

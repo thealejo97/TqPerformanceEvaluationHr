@@ -1,0 +1,82 @@
+@page "{id:int}"
+@model TqPerformanceEvaluationHr.Web.Pages.EvaluationCycles.EditModel
+@{
+    ViewData["Title"] = "Edit Evaluation Cycle";
+}
+
+<div class="container-fluid py-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="fw-bold text-tq display-5">Edit Evaluation Cycle</h1>
+            <p class="text-muted">Modify the evaluation cycle details</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card border-0 shadow-sm rounded-3">
+                <div class="card-body p-4">
+                    <form method="post">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger mb-4" role="alert"></div>
+                        
+                        <input type="hidden" asp-for="Input.Id" />
+
+                        <div class="mb-3">
+                            <label asp-for="Input.Year" class="form-label"></label>
+                            <input asp-for="Input.Year" class="form-control" />
+                            <span asp-validation-for="Input.Year" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Input.StartDate" class="form-label"></label>
+                            <input asp-for="Input.StartDate" class="form-control" type="date" />
+                            <span asp-validation-for="Input.StartDate" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Input.EndDate" class="form-label"></label>
+                            <input asp-for="Input.EndDate" class="form-control" type="date" />
+                            <span asp-validation-for="Input.EndDate" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-4">
+                            <div class="form-check form-switch">
+                                <input asp-for="Input.IsActive" class="form-check-input" type="checkbox" />
+                                <label asp-for="Input.IsActive" class="form-check-label"></label>
+                            </div>
+                        </div>
+
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-tq">
+                                <i class="bi bi-save me-2"></i>Save Changes
+                            </button>
+                            <a asp-page="./Index" class="btn btn-outline-secondary">
+                                <i class="bi bi-arrow-left me-2"></i>Back to List
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .text-tq {
+        color: #004b99 !important;
+    }
+    
+    .btn-tq {
+        background-color: #004b99;
+        color: white;
+    }
+    
+    .btn-tq:hover {
+        background-color: #003d7a;
+        color: white;
+    }
+</style>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+} 

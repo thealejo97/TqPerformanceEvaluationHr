@@ -1,10 +1,10 @@
 @page
 @model TqPerformanceEvaluationHr.Web.Pages.Employees.CreateModel
 @{
-    ViewData["Title"] = "Nuevo Empleado";
+    ViewData["Title"] = "New Employee";
 }
 
-<h1>Nuevo Empleado</h1>
+<h1>New Employee</h1>
 
 <form method="post">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -23,14 +23,13 @@
     </div>
 
     <div class="mb-3">
-        <label asp-for="Employee.PositionId" class="form-label">Cargo</label>
+        <label asp-for="Employee.PositionId" class="form-label">Position</label>
         <select asp-for="Employee.PositionId" class="form-select" asp-items="Model.Positions">
-            <option value="">Seleccione un cargo</option>
+            <option value="">Select a position</option>
         </select>
         <span asp-validation-for="Employee.PositionId" class="text-danger"></span>
-        <div asp-validation-summary="All" class="text-danger"></div>
     </div>
 
-    <button type="submit" class="btn btn-primary">Crear</button>
+    <button type="submit" class="btn btn-primary">Create</button>
 </form>
 

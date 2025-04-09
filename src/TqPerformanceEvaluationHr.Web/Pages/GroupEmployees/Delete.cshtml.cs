@@ -15,6 +15,7 @@ public class DeleteModel : PageModel
     {
         _context = context;
         _logger = logger;
+        GroupEmployee = new GroupEmployee();
     }
 
     [BindProperty]
@@ -29,21 +30,17 @@ public class DeleteModel : PageModel
             return NotFound();
         }
 
-        GroupEmployee = await _context.GroupEmployees
+        var groupEmployee = await _context.GroupEmployees
             .Include(ge => ge.Employee)
             .Include(ge => ge.EvaluationGroup)
-                .ThenInclude(eg => eg.EvaluationCycle)
-            .FirstOrDefaultAsync(ge => ge.Id == id);
+            .FirstOrDefaultAsync(m => m.Id == id);
 
-        if (GroupEmployee == null)
+        if (groupEmployee == null)
         {
             return NotFound();
         }
 
-        // Verificar si hay evaluaciones relacionadas
-        RelatedEvaluationsCount = await _context.Evaluations
-            .CountAsync(e => e.GroupEmployeeId == GroupEmployee.Id);
-
+        GroupEmployee = groupEmployee;
         return Page();
     }
 
@@ -54,12 +51,17 @@ public class DeleteModel : PageModel
             return NotFound();
         }
 
-        GroupEmployee = await _context.GroupEmployees.FindAsync(id);
+        var groupEmployee = await _context.GroupEmployees
+            .Include(ge => ge.Employee)
+            .Include(ge => ge.EvaluationGroup)
+            .FirstOrDefaultAsync(m => m.Id == id);
 
-        if (GroupEmployee == null)
+        if (groupEmployee == null)
         {
             return NotFound();
         }
+
+        GroupEmployee = groupEmployee;
 
         // Verificar si hay evaluaciones relacionadas
         var hasEvaluations = await _context.Evaluations

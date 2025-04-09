@@ -1,0 +1,81 @@
+@page
+@model TqPerformanceEvaluationHr.Web.Pages.EvaluationCycles.CreateModel
+@{
+    ViewData["Title"] = "Create Evaluation Cycle";
+}
+
+<div class="container">
+    <h2 class="mb-4 text-tq-blue">Create Evaluation Cycle</h2>
+
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <form id="createCycleForm" method="post">
+                <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Input.Year" class="form-label"></label>
+                        <input asp-for="Input.Year" class="form-control" type="number" min="2000" max="2100" />
+                        <span asp-validation-for="Input.Year" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Input.IsActive" class="form-label"></label>
+                        <div class="form-check form-switch">
+                            <input asp-for="Input.IsActive" class="form-check-input" type="checkbox" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Input.StartDate" class="form-label"></label>
+                        <input asp-for="Input.StartDate" class="form-control" type="date" />
+                        <span asp-validation-for="Input.StartDate" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Input.EndDate" class="form-label"></label>
+                        <input asp-for="Input.EndDate" class="form-control" type="date" />
+                        <span asp-validation-for="Input.EndDate" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between mt-4">
+                    <a asp-page="./Index" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </a>
+                    <button id="submitButton" type="submit" class="btn btn-tq-blue">
+                        <i class="fas fa-save"></i> Save
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    .btn-tq-blue {
+        background-color: #005f9e;
+        color: white;
+    }
+
+    .btn-tq-blue:hover {
+        background-color: #004a7c;
+        color: white;
+    }
+
+    .text-tq-blue {
+        color: #005f9e;
+    }
+</style>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function () {
+            // Prevent multiple form submissions
+            $('#createCycleForm').on('submit', function () {
+                $('#submitButton').prop('disabled', true).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Saving...');
+            });
+        });
+    </script>
+} 

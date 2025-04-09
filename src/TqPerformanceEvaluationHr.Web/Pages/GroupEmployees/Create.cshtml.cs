@@ -16,6 +16,8 @@ public class CreateModel : PageModel
     {
         _context = context;
         _logger = logger;
+        Employees = new List<SelectListItem>();
+        EvaluationGroups = new List<SelectListItem>();
     }
 
     [BindProperty]
@@ -24,12 +26,15 @@ public class CreateModel : PageModel
     [BindProperty]
     public int EvaluationGroupId { get; set; }
 
-    public SelectList Employees { get; set; }
-    public SelectList EvaluationGroups { get; set; }
+    public List<SelectListItem> Employees { get; set; }
+    public List<SelectListItem> EvaluationGroups { get; set; }
+
+    [BindProperty]
+    public GroupEmployee GroupEmployee { get; set; } = new();
 
     public async Task<IActionResult> OnGetAsync()
     {
-        await LoadSelectLists();
+        await LoadSelectListsAsync();
         return Page();
     }
 
@@ -41,79 +46,73 @@ public class CreateModel : PageModel
         if (!ModelState.IsValid)
         {
             _logger.LogWarning("Modelo inválido");
-            await LoadSelectLists();
+            await LoadSelectListsAsync();
             return Page();
         }
 
-        // Validar existencia del empleado
+        
         var employee = await _context.Employees.FindAsync(EmployeeId);
         if (employee == null)
         {
             ModelState.AddModelError("EmployeeId", "Employee not found");
-            await LoadSelectLists();
+            await LoadSelectListsAsync();
             return Page();
         }
 
-        // Validar existencia del grupo
+        
         var evaluationGroup = await _context.EvaluationGroups.FindAsync(EvaluationGroupId);
         if (evaluationGroup == null)
         {
             ModelState.AddModelError("EvaluationGroupId", "Evaluation Group not found");
-            await LoadSelectLists();
+            await LoadSelectListsAsync();
             return Page();
         }
 
-        // Verificar que no exista ya esta asignación
+        
         var exists = await _context.GroupEmployees
             .AnyAsync(ge => ge.EmployeeId == EmployeeId && ge.EvaluationGroupId == EvaluationGroupId);
         
         if (exists)
         {
             ModelState.AddModelError(string.Empty, "This employee is already assigned to this evaluation group");
-            await LoadSelectLists();
+            await LoadSelectListsAsync();
             return Page();
         }
 
-        // Crear la nueva asignación
-        var groupEmployee = new GroupEmployee
-        {
-            EmployeeId = EmployeeId,
-            EvaluationGroupId = EvaluationGroupId
-        };
+        
+        GroupEmployee.EmployeeId = EmployeeId;
+        GroupEmployee.EvaluationGroupId = EvaluationGroupId;
 
-        _context.GroupEmployees.Add(groupEmployee);
+        _context.GroupEmployees.Add(GroupEmployee);
         await _context.SaveChangesAsync();
 
         return RedirectToPage("./Index");
     }
 
-    private async Task LoadSelectLists()
+    private async Task LoadSelectListsAsync()
     {
-        // Cargar empleados
-        Employees = new SelectList(
-            await _context.Employees
-                .Include(e => e.Position)
-                .Select(e => new
-                {
-                    Id = e.Id, 
-                    DisplayName = e.FullName + " (" + e.Position.Name + ")"
-                })
-                .OrderBy(e => e.DisplayName)
-                .ToListAsync(),
-            "Id", "DisplayName");
-
-        // Cargar grupos de evaluación
-        var evaluationGroupItems = await _context.EvaluationGroups
-            .Include(eg => eg.EvaluationCycle)
-            .Select(eg => new
+        var employees = await _context.Employees
+            .Include(e => e.Position)
+            .Select(e => new SelectListItem
             {
-                Id = eg.Id,
-                DisplayName = eg.Name + " - Cycle: " + eg.EvaluationCycle.Year + 
-                    " (" + eg.StartDate.ToString("dd/MM/yyyy") + " - " + eg.EndDate.ToString("dd/MM/yyyy") + ")"
+                Value = e.Id.ToString(),
+                Text = e.FullName + " (" + e.Position.Name + ")"
             })
-            .OrderByDescending(eg => eg.Id)
+            .OrderBy(e => e.Text)
             .ToListAsync();
 
-        EvaluationGroups = new SelectList(evaluationGroupItems, "Id", "DisplayName");
+        var groups = await _context.EvaluationGroups
+            .Include(eg => eg.EvaluationCycle)
+            .Select(g => new SelectListItem
+            {
+                Value = g.Id.ToString(),
+                Text = g.Name + " - Cycle: " + g.EvaluationCycle.Year + 
+                    " (" + g.StartDate.ToString("dd/MM/yyyy") + " - " + g.EndDate.ToString("dd/MM/yyyy") + ")"
+            })
+            .OrderByDescending(g => g.Text)
+            .ToListAsync();
+
+        Employees = employees;
+        EvaluationGroups = groups;
     }
 } 

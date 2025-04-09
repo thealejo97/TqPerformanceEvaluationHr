@@ -185,9 +185,21 @@
                                 </a>
                             </li>
                             <li>
+                                <a class="dropdown-item @(ViewContext.RouteData.Values["Page"].ToString().Contains("/EvaluationCycles") ? "active" : "")" 
+                                   asp-page="/EvaluationCycles/Index">
+                                    <i class="bi bi-calendar-check"></i>Evaluation Cycles
+                                </a>
+                            </li>
+                            <li>
                                 <a class="dropdown-item @(ViewContext.RouteData.Values["Page"].ToString().Contains("/Questionnaires") ? "active" : "")" 
                                    asp-page="/Questionnaires/Index">
                                     <i class="bi bi-card-checklist"></i>Questionnaires
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item @(ViewContext.RouteData.Values["Page"].ToString().Contains("/EvaluationGroups") ? "active" : "")" 
+                                   asp-page="/EvaluationGroups/Index">
+                                    <i class="bi bi-people-fill"></i>Evaluation Groups
                                 </a>
                             </li>
                             <li>
@@ -201,6 +213,12 @@
                                 <a class="dropdown-item @(ViewContext.RouteData.Values["Page"].ToString().Contains("/Evaluations") ? "active" : "")" 
                                    asp-page="/Evaluations/Index">
                                     <i class="bi bi-clipboard-data"></i>Evaluations
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item @(ViewContext.RouteData.Values["Page"].ToString().Contains("/EvaluationResults") ? "active" : "")" 
+                                   asp-page="/EvaluationResults/Index">
+                                    <i class="bi bi-graph-up"></i>Evaluation Results
                                 </a>
                             </li>
                         </ul>

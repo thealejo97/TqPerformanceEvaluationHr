@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using TqPerformanceEvaluationHr.Domain.Entities;
 using TqPerformanceEvaluationHr.Infrastructure.Persistence;
 
@@ -10,79 +11,88 @@ namespace TqPerformanceEvaluationHr.Web.Pages.Evaluations;
 public class CreateModel : PageModel
 {
     private readonly AppDbContext _context;
-    private readonly ILogger<CreateModel> _logger;
 
-    public CreateModel(AppDbContext context, ILogger<CreateModel> logger)
+    public CreateModel(AppDbContext context)
     {
         _context = context;
-        _logger = logger;
+        Employees = new List<SelectListItem>();
+        EvaluationCycles = new List<SelectListItem>();
+        Questionnaires = new List<SelectListItem>();
     }
 
     [BindProperty]
-    public int EmployeeId { get; set; }
+    public InputModel Input { get; set; } = new();
 
-    [BindProperty]
-    public int GroupEmployeeId { get; set; }
+    public List<SelectListItem> Employees { get; set; }
+    public List<SelectListItem> EvaluationCycles { get; set; }
+    public List<SelectListItem> Questionnaires { get; set; }
 
-    [BindProperty]
-    public int QuestionnaireId { get; set; }
+    public class InputModel
+    {
+        [Required(ErrorMessage = "The employee is required")]
+        [Display(Name = "Employee")]
+        public int EmployeeId { get; set; }
 
-    [BindProperty]
-    public DateTime EvaluationDate { get; set; } = DateTime.Today;
+        [Required(ErrorMessage = "The evaluation cycle is required")]
+        [Display(Name = "Evaluation Cycle")]
+        public int EvaluationCycleId { get; set; }
 
-    public SelectList Employees { get; set; }
-    public SelectList GroupEmployees { get; set; }
-    public SelectList Questionnaires { get; set; }
+        [Required(ErrorMessage = "The questionnaire is required")]
+        [Display(Name = "Questionnaire")]
+        public int QuestionnaireId { get; set; }
+
+        [Required(ErrorMessage = "The evaluation date is required")]
+        [DataType(DataType.Date)]
+        [Display(Name = "Evaluation Date")]
+        public DateTime EvaluationDate { get; set; } = DateTime.Today;
+    }
 
     public async Task<IActionResult> OnGetAsync()
     {
-        await LoadSelectLists();
+        await LoadSelectListsAsync();
         return Page();
     }
 
     public async Task<IActionResult> OnPostAsync()
     {
-        _logger.LogInformation("Comenzando creación de evaluación: Employee {EmployeeId}, Group {GroupId}, Questionnaire {QuestionnaireId}", 
-            EmployeeId, GroupEmployeeId, QuestionnaireId);
-
         if (!ModelState.IsValid)
         {
-            _logger.LogWarning("Modelo inválido");
-            await LoadSelectLists();
+            await LoadSelectListsAsync();
             return Page();
         }
 
-        // Validaciones adicionales
-        var employee = await _context.Employees.FindAsync(EmployeeId);
+        // Verify that the employee exists
+        var employee = await _context.Employees.FindAsync(Input.EmployeeId);
         if (employee == null)
         {
-            ModelState.AddModelError("EmployeeId", "Employee not found");
-            await LoadSelectLists();
+            ModelState.AddModelError("Input.EmployeeId", "The selected employee does not exist");
+            await LoadSelectListsAsync();
             return Page();
         }
 
-        var groupEmployee = await _context.GroupEmployees.FindAsync(GroupEmployeeId);
-        if (groupEmployee == null)
+        // Verify that the evaluation cycle exists
+        var evaluationCycle = await _context.EvaluationCycles.FindAsync(Input.EvaluationCycleId);
+        if (evaluationCycle == null)
         {
-            ModelState.AddModelError("GroupEmployeeId", "Group Employee not found");
-            await LoadSelectLists();
+            ModelState.AddModelError("Input.EvaluationCycleId", "The selected evaluation cycle does not exist");
+            await LoadSelectListsAsync();
             return Page();
         }
 
-        var questionnaire = await _context.Questionnaires.FindAsync(QuestionnaireId);
+        // Verify that the questionnaire exists
+        var questionnaire = await _context.Questionnaires.FindAsync(Input.QuestionnaireId);
         if (questionnaire == null)
         {
-            ModelState.AddModelError("QuestionnaireId", "Questionnaire not found");
-            await LoadSelectLists();
+            ModelState.AddModelError("Input.QuestionnaireId", "The selected questionnaire does not exist");
+            await LoadSelectListsAsync();
             return Page();
         }
 
         var evaluation = new Evaluation
         {
-            EmployeeId = EmployeeId,
-            GroupEmployeeId = GroupEmployeeId,
-            QuestionnaireId = QuestionnaireId,
-            EvaluationDate = EvaluationDate
+            EmployeeId = Input.EmployeeId,
+            QuestionnaireId = Input.QuestionnaireId,
+            EvaluationDate = Input.EvaluationDate
         };
 
         _context.Evaluations.Add(evaluation);
@@ -91,37 +101,31 @@ public class CreateModel : PageModel
         return RedirectToPage("./Index");
     }
 
-    private async Task LoadSelectLists()
+    private async Task LoadSelectListsAsync()
     {
-        // Cargar empleados
-        Employees = new SelectList(
-            await _context.Employees.OrderBy(e => e.FullName).ToListAsync(),
-            "Id", "FullName");
-
-        // Cargar GroupEmployees de manera simplificada
-        var groupEmployeeItems = await _context.GroupEmployees
-            .Include(ge => ge.EvaluationGroup)
-            .Include(ge => ge.Employee)
-            .Select(ge => new
+        Employees = await _context.Employees
+            .Select(e => new SelectListItem
             {
-                Id = ge.Id,
-                DisplayName = ge.EvaluationGroup.Name + " - " + ge.Employee.FullName
+                Value = e.Id.ToString(),
+                Text = e.FullName
             })
             .ToListAsync();
 
-        GroupEmployees = new SelectList(groupEmployeeItems, "Id", "DisplayName");
-
-        // Cargar cuestionarios
-        var questionnaireItems = await _context.Questionnaires
-            .Include(q => q.EvaluationModel)
-            .Include(q => q.Position)
-            .Select(q => new
+        EvaluationCycles = await _context.EvaluationCycles
+            .Where(c => c.IsActive)
+            .Select(c => new SelectListItem
             {
-                Id = q.Id,
-                DisplayName = q.Title + " (" + q.EvaluationModel.Name + " - " + q.Position.Name + ")"
+                Value = c.Id.ToString(),
+                Text = c.Year.ToString()
             })
             .ToListAsync();
 
-        Questionnaires = new SelectList(questionnaireItems, "Id", "DisplayName");
+        Questionnaires = await _context.Questionnaires
+            .Select(q => new SelectListItem
+            {
+                Value = q.Id.ToString(),
+                Text = q.Title
+            })
+            .ToListAsync();
     }
 } 

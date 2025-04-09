@@ -13,6 +13,7 @@ public class DetailsModel : PageModel
     public DetailsModel(AppDbContext context)
     {
         _context = context;
+        GroupEmployee = new GroupEmployee();
     }
 
     public GroupEmployee GroupEmployee { get; set; }
@@ -25,17 +26,19 @@ public class DetailsModel : PageModel
             return NotFound();
         }
 
-        GroupEmployee = await _context.GroupEmployees
+        var groupEmployee = await _context.GroupEmployees
             .Include(ge => ge.Employee)
                 .ThenInclude(e => e.Position)
             .Include(ge => ge.EvaluationGroup)
                 .ThenInclude(eg => eg.EvaluationCycle)
-            .FirstOrDefaultAsync(ge => ge.Id == id);
+            .FirstOrDefaultAsync(m => m.Id == id);
 
-        if (GroupEmployee == null)
+        if (groupEmployee == null)
         {
             return NotFound();
         }
+
+        GroupEmployee = groupEmployee;
 
         // Cargar evaluaciones relacionadas
         RelatedEvaluations = await _context.Evaluations

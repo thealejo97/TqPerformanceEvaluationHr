@@ -4,109 +4,58 @@
     ViewData["Title"] = "Create Evaluation";
 }
 
-<div class="container-fluid py-4">
-    <div class="row mb-4">
-        <div class="col-12">
-            <h1 class="fw-bold text-tq display-5">Create Evaluation</h1>
-            <p class="text-muted">Register a new evaluation in the system</p>
-        </div>
-    </div>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Create New Evaluation</h3>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
-    <div class="card border-0 shadow-sm rounded-3">
-        <div class="card-body p-4">
-            <form method="post" id="createEvaluationForm">
-                <div asp-validation-summary="All" class="text-danger mb-4"></div>
+                        <div class="form-group mb-3">
+                            <label asp-for="Input.EmployeeId" class="control-label">Employee</label>
+                            <select asp-for="Input.EmployeeId" class="form-control" asp-items="Model.Employees">
+                                <option value="">-- Select Employee --</option>
+                            </select>
+                            <span asp-validation-for="Input.EmployeeId" class="text-danger"></span>
+                        </div>
 
-                <div class="row">
-                    <div class="col-md-6 mb-4">
-                        <label asp-for="EmployeeId" class="form-label fw-medium">Employee</label>
-                        <select asp-for="EmployeeId" asp-items="Model.Employees" class="form-select" required>
-                            <option value="">-- Select Employee --</option>
-                        </select>
-                        <span asp-validation-for="EmployeeId" class="text-danger"></span>
-                    </div>
-                    
-                    <div class="col-md-6 mb-4">
-                        <label asp-for="GroupEmployeeId" class="form-label fw-medium">Evaluation Group</label>
-                        <select asp-for="GroupEmployeeId" asp-items="Model.GroupEmployees" class="form-select" required>
-                            <option value="">-- Select Group --</option>
-                        </select>
-                        <span asp-validation-for="GroupEmployeeId" class="text-danger"></span>
-                    </div>
+                        <div class="form-group mb-3">
+                            <label asp-for="Input.EvaluationCycleId" class="control-label">Evaluation Cycle</label>
+                            <select asp-for="Input.EvaluationCycleId" class="form-control" asp-items="Model.EvaluationCycles">
+                                <option value="">-- Select Cycle --</option>
+                            </select>
+                            <span asp-validation-for="Input.EvaluationCycleId" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Input.QuestionnaireId" class="control-label">Questionnaire</label>
+                            <select asp-for="Input.QuestionnaireId" class="form-control" asp-items="Model.Questionnaires">
+                                <option value="">-- Select Questionnaire --</option>
+                            </select>
+                            <span asp-validation-for="Input.QuestionnaireId" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Input.EvaluationDate" class="control-label">Evaluation Date</label>
+                            <input asp-for="Input.EvaluationDate" class="form-control" type="date" />
+                            <span asp-validation-for="Input.EvaluationDate" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Create</button>
+                            <a asp-page="./Index" class="btn btn-secondary">Back to List</a>
+                        </div>
+                    </form>
                 </div>
-                
-                <div class="row">
-                    <div class="col-md-6 mb-4">
-                        <label asp-for="QuestionnaireId" class="form-label fw-medium">Questionnaire</label>
-                        <select asp-for="QuestionnaireId" asp-items="Model.Questionnaires" class="form-select" required>
-                            <option value="">-- Select Questionnaire --</option>
-                        </select>
-                        <span asp-validation-for="QuestionnaireId" class="text-danger"></span>
-                    </div>
-                    
-                    <div class="col-md-6 mb-4">
-                        <label asp-for="EvaluationDate" class="form-label fw-medium">Evaluation Date</label>
-                        <input asp-for="EvaluationDate" class="form-control" type="date" required />
-                        <span asp-validation-for="EvaluationDate" class="text-danger"></span>
-                    </div>
-                </div>
-                
-                <div class="d-flex justify-content-end gap-2 mt-4">
-                    <a asp-page="Index" class="btn btn-outline-secondary">
-                        <i class="bi bi-x-circle me-2"></i>Cancel
-                    </a>
-                    <button type="submit" class="btn btn-tq">
-                        <i class="bi bi-check-circle me-2"></i>Create Evaluation
-                    </button>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>
 
-<style>
-    .text-tq {
-        color: #004b99 !important;
-    }
-    
-    .btn-tq {
-        background-color: #004b99;
-        border-color: #004b99;
-        color: white;
-    }
-    
-    .btn-tq:hover {
-        background-color: #003366;
-        border-color: #003366;
-        color: white;
-    }
-    
-    .form-control:focus, .form-select:focus {
-        border-color: #004b99;
-        box-shadow: 0 0 0 0.25rem rgba(0, 75, 153, 0.25);
-    }
-</style>
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    
-    <script>
-        $(document).ready(function() {
-            // Prevenir múltiples envíos del formulario
-            $('#createEvaluationForm').submit(function() {
-                $(this).find('button[type="submit"]').prop('disabled', true);
-                $(this).find('button[type="submit"]').html('<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Creating...');
-                return true;
-            });
-            
-            // Validación adicional en selects
-            $('select').on('change', function() {
-                if ($(this).val()) {
-                    $(this).addClass('is-valid').removeClass('is-invalid');
-                } else {
-                    $(this).addClass('is-invalid').removeClass('is-valid');
-                }
-            });
-        });
-    </script>
 } 

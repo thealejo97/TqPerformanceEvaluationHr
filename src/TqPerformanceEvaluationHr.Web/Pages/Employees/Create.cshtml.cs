@@ -9,7 +9,12 @@ namespace TqPerformanceEvaluationHr.Web.Pages.Employees;
 public class CreateModel : PageModel
 {
     private readonly AppDbContext _context;
-    public CreateModel(AppDbContext context) => _context = context;
+
+    public CreateModel(AppDbContext context)
+    {
+        _context = context;
+        Positions = new SelectList(new List<Position>(), "Id", "Name");
+    }
 
     [BindProperty]
     public Employee Employee { get; set; } = new();

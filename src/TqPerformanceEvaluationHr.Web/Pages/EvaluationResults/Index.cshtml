@@ -1,0 +1,68 @@
+@page
+@model TqPerformanceEvaluationHr.Web.Pages.EvaluationResults.IndexModel
+@{
+    ViewData["Title"] = "Evaluation Results";
+}
+
+<div class="container-fluid py-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="fw-bold text-tq display-5">Evaluation Results</h1>
+            <p class="text-muted">View and manage evaluation results</p>
+        </div>
+    </div>
+
+    <div class="card border-0 shadow-sm rounded-3">
+        <div class="card-body p-4">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Employee</th>
+                            <th>Group</th>
+                            <th>Qualitative Concept</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var result in Model.EvaluationResults)
+                        {
+                            <tr>
+                                <td>@result.Evaluation.Employee.FullName</td>
+                                <td>@result.Evaluation.GroupEmployee.EvaluationGroup.Name</td>
+                                <td>@result.QualitativeConcept</td>
+                                <td>@result.Evaluation.EvaluationDate.ToShortDateString()</td>
+                                <td>
+                                    <a asp-page="./Details" asp-route-id="@result.Id" class="btn btn-sm btn-outline-primary">
+                                        <i class="bi bi-eye"></i> View
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .text-tq {
+        color: #004b99 !important;
+    }
+    
+    .table th {
+        background-color: #f8f9fa;
+        border-bottom: 2px solid #dee2e6;
+    }
+    
+    .table td {
+        vertical-align: middle;
+    }
+    
+    .badge {
+        font-size: 0.85em;
+        padding: 0.5em 0.75em;
+    }
+</style> 

@@ -1,10 +1,10 @@
 @page
 @model TqPerformanceEvaluationHr.Web.Pages.Positions.CreateModel
 @{
-    ViewData["Title"] = "Crear Cargo";
+    ViewData["Title"] = "Create Position";
 }
 
-<h1>Crear Cargo</h1>
+<h1>Create Position</h1>
 
 <form method="post">
     <div class="form-group">
@@ -13,6 +13,6 @@
         <span asp-validation-for="Position.Name" class="text-danger"></span>
     </div>
     <br />
-    <button type="submit" class="btn btn-primary">Crear</button>
-    <a asp-page="Index" class="btn btn-secondary">Cancelar</a>
+    <button type="submit" class="btn btn-primary">Create</button>
+    <a asp-page="Index" class="btn btn-secondary">Cancel</a>
 </form>
