@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\usuario\\Desktop\\tq\\TqPerformanceEvaluationHr\\src\\TqPerformanceEvaluationHr.Web\\TqPerformanceEvaluationHr.Web.csproj": {}
+    "/src/src/TqPerformanceEvaluationHr.Web/TqPerformanceEvaluationHr.Web.csproj": {}
   },
   "projects": {
-    "C:\\Users\\usuario\\Desktop\\tq\\TqPerformanceEvaluationHr\\src\\TqPerformanceEvaluationHr.Application\\TqPerformanceEvaluationHr.Application.csproj": {
+    "/src/src/TqPerformanceEvaluationHr.Application/TqPerformanceEvaluationHr.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\usuario\\Desktop\\tq\\TqPerformanceEvaluationHr\\src\\TqPerformanceEvaluationHr.Application\\TqPerformanceEvaluationHr.Application.csproj",
+        "projectUniqueName": "/src/src/TqPerformanceEvaluationHr.Application/TqPerformanceEvaluationHr.Application.csproj",
         "projectName": "TqPerformanceEvaluationHr.Application",
-        "projectPath": "C:\\Users\\usuario\\Desktop\\tq\\TqPerformanceEvaluationHr\\src\\TqPerformanceEvaluationHr.Application\\TqPerformanceEvaluationHr.Application.csproj",
-        "packagesPath": "C:\\Users\\usuario\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\usuario\\Desktop\\tq\\TqPerformanceEvaluationHr\\src\\TqPerformanceEvaluationHr.Application\\obj\\",
+        "projectPath": "/src/src/TqPerformanceEvaluationHr.Application/TqPerformanceEvaluationHr.Application.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/src/src/TqPerformanceEvaluationHr.Application/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\usuario\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/root/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -26,8 +26,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\usuario\\Desktop\\tq\\TqPerformanceEvaluationHr\\src\\TqPerformanceEvaluationHr.Domain\\TqPerformanceEvaluationHr.Domain.csproj": {
-                "projectPath": "C:\\Users\\usuario\\Desktop\\tq\\TqPerformanceEvaluationHr\\src\\TqPerformanceEvaluationHr.Domain\\TqPerformanceEvaluationHr.Domain.csproj"
+              "/src/src/TqPerformanceEvaluationHr.Domain/TqPerformanceEvaluationHr.Domain.csproj": {
+                "projectPath": "/src/src/TqPerformanceEvaluationHr.Domain/TqPerformanceEvaluationHr.Domain.csproj"
               }
             }
           }
@@ -62,21 +62,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.407/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.408/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\usuario\\Desktop\\tq\\TqPerformanceEvaluationHr\\src\\TqPerformanceEvaluationHr.Domain\\TqPerformanceEvaluationHr.Domain.csproj": {
+    "/src/src/TqPerformanceEvaluationHr.Domain/TqPerformanceEvaluationHr.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\usuario\\Desktop\\tq\\TqPerformanceEvaluationHr\\src\\TqPerformanceEvaluationHr.Domain\\TqPerformanceEvaluationHr.Domain.csproj",
+        "projectUniqueName": "/src/src/TqPerformanceEvaluationHr.Domain/TqPerformanceEvaluationHr.Domain.csproj",
         "projectName": "TqPerformanceEvaluationHr.Domain",
-        "projectPath": "C:\\Users\\usuario\\Desktop\\tq\\TqPerformanceEvaluationHr\\src\\TqPerformanceEvaluationHr.Domain\\TqPerformanceEvaluationHr.Domain.csproj",
-        "packagesPath": "C:\\Users\\usuario\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\usuario\\Desktop\\tq\\TqPerformanceEvaluationHr\\src\\TqPerformanceEvaluationHr.Domain\\obj\\",
+        "projectPath": "/src/src/TqPerformanceEvaluationHr.Domain/TqPerformanceEvaluationHr.Domain.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/src/src/TqPerformanceEvaluationHr.Domain/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\usuario\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/root/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -120,21 +120,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.407/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.408/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\usuario\\Desktop\\tq\\TqPerformanceEvaluationHr\\src\\TqPerformanceEvaluationHr.Infrastructure\\TqPerformanceEvaluationHr.Infrastructure.csproj": {
+    "/src/src/TqPerformanceEvaluationHr.Infrastructure/TqPerformanceEvaluationHr.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\usuario\\Desktop\\tq\\TqPerformanceEvaluationHr\\src\\TqPerformanceEvaluationHr.Infrastructure\\TqPerformanceEvaluationHr.Infrastructure.csproj",
+        "projectUniqueName": "/src/src/TqPerformanceEvaluationHr.Infrastructure/TqPerformanceEvaluationHr.Infrastructure.csproj",
         "projectName": "TqPerformanceEvaluationHr.Infrastructure",
-        "projectPath": "C:\\Users\\usuario\\Desktop\\tq\\TqPerformanceEvaluationHr\\src\\TqPerformanceEvaluationHr.Infrastructure\\TqPerformanceEvaluationHr.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\usuario\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\usuario\\Desktop\\tq\\TqPerformanceEvaluationHr\\src\\TqPerformanceEvaluationHr.Infrastructure\\obj\\",
+        "projectPath": "/src/src/TqPerformanceEvaluationHr.Infrastructure/TqPerformanceEvaluationHr.Infrastructure.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/src/src/TqPerformanceEvaluationHr.Infrastructure/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\usuario\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/root/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -146,11 +146,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\usuario\\Desktop\\tq\\TqPerformanceEvaluationHr\\src\\TqPerformanceEvaluationHr.Application\\TqPerformanceEvaluationHr.Application.csproj": {
-                "projectPath": "C:\\Users\\usuario\\Desktop\\tq\\TqPerformanceEvaluationHr\\src\\TqPerformanceEvaluationHr.Application\\TqPerformanceEvaluationHr.Application.csproj"
+              "/src/src/TqPerformanceEvaluationHr.Application/TqPerformanceEvaluationHr.Application.csproj": {
+                "projectPath": "/src/src/TqPerformanceEvaluationHr.Application/TqPerformanceEvaluationHr.Application.csproj"
               },
-              "C:\\Users\\usuario\\Desktop\\tq\\TqPerformanceEvaluationHr\\src\\TqPerformanceEvaluationHr.Domain\\TqPerformanceEvaluationHr.Domain.csproj": {
-                "projectPath": "C:\\Users\\usuario\\Desktop\\tq\\TqPerformanceEvaluationHr\\src\\TqPerformanceEvaluationHr.Domain\\TqPerformanceEvaluationHr.Domain.csproj"
+              "/src/src/TqPerformanceEvaluationHr.Domain/TqPerformanceEvaluationHr.Domain.csproj": {
+                "projectPath": "/src/src/TqPerformanceEvaluationHr.Domain/TqPerformanceEvaluationHr.Domain.csproj"
               }
             }
           }
@@ -201,21 +201,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.407/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.408/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\usuario\\Desktop\\tq\\TqPerformanceEvaluationHr\\src\\TqPerformanceEvaluationHr.Web\\TqPerformanceEvaluationHr.Web.csproj": {
+    "/src/src/TqPerformanceEvaluationHr.Web/TqPerformanceEvaluationHr.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\usuario\\Desktop\\tq\\TqPerformanceEvaluationHr\\src\\TqPerformanceEvaluationHr.Web\\TqPerformanceEvaluationHr.Web.csproj",
+        "projectUniqueName": "/src/src/TqPerformanceEvaluationHr.Web/TqPerformanceEvaluationHr.Web.csproj",
         "projectName": "TqPerformanceEvaluationHr.Web",
-        "projectPath": "C:\\Users\\usuario\\Desktop\\tq\\TqPerformanceEvaluationHr\\src\\TqPerformanceEvaluationHr.Web\\TqPerformanceEvaluationHr.Web.csproj",
-        "packagesPath": "C:\\Users\\usuario\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\usuario\\Desktop\\tq\\TqPerformanceEvaluationHr\\src\\TqPerformanceEvaluationHr.Web\\obj\\",
+        "projectPath": "/src/src/TqPerformanceEvaluationHr.Web/TqPerformanceEvaluationHr.Web.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/src/src/TqPerformanceEvaluationHr.Web/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\usuario\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/root/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -227,11 +227,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\usuario\\Desktop\\tq\\TqPerformanceEvaluationHr\\src\\TqPerformanceEvaluationHr.Application\\TqPerformanceEvaluationHr.Application.csproj": {
-                "projectPath": "C:\\Users\\usuario\\Desktop\\tq\\TqPerformanceEvaluationHr\\src\\TqPerformanceEvaluationHr.Application\\TqPerformanceEvaluationHr.Application.csproj"
+              "/src/src/TqPerformanceEvaluationHr.Application/TqPerformanceEvaluationHr.Application.csproj": {
+                "projectPath": "/src/src/TqPerformanceEvaluationHr.Application/TqPerformanceEvaluationHr.Application.csproj"
               },
-              "C:\\Users\\usuario\\Desktop\\tq\\TqPerformanceEvaluationHr\\src\\TqPerformanceEvaluationHr.Infrastructure\\TqPerformanceEvaluationHr.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\usuario\\Desktop\\tq\\TqPerformanceEvaluationHr\\src\\TqPerformanceEvaluationHr.Infrastructure\\TqPerformanceEvaluationHr.Infrastructure.csproj"
+              "/src/src/TqPerformanceEvaluationHr.Infrastructure/TqPerformanceEvaluationHr.Infrastructure.csproj": {
+                "projectPath": "/src/src/TqPerformanceEvaluationHr.Infrastructure/TqPerformanceEvaluationHr.Infrastructure.csproj"
               }
             }
           }
@@ -285,7 +285,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.407/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.408/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
