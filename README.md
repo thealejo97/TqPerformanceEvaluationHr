@@ -7,16 +7,13 @@ Solución tecnológica para el proceso de evaluación de desempeño de Recursos 
 ## Arquitectura del Proyecto
 
 Este proyecto está desarrollado con **.NET 8**, utilizando **Clean Architecture**, **Razor Pages** como frontend y **PostgreSQL** como base de datos. La estructura sigue buenas prácticas y separación por capas:
-
+```
 src/
 ├── TqPerformanceEvaluationHr.Web           → Capa de presentación (Razor Pages)
-
 ├── TqPerformanceEvaluationHr.Application   → Lógica de negocio (casos de uso, DTOs)
-
 ├── TqPerformanceEvaluationHr.Domain        → Entidades y reglas del dominio
-
 ├── TqPerformanceEvaluationHr.Infrastructure→ Persistencia, EF Core, PostgreSQL
-
+```
 
 ## Tecnologías y herramientas
 
