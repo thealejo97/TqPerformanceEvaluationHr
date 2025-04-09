@@ -1,0 +1,86 @@
+@page "{id:int}"
+@model TqPerformanceEvaluationHr.Web.Pages.Evaluations.DeleteModel
+@{
+    ViewData["Title"] = "Delete Evaluation";
+}
+
+<div class="container-fluid py-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="fw-bold text-tq display-5">Delete Evaluation</h1>
+            <p class="text-muted">Are you sure you want to delete this evaluation?</p>
+        </div>
+    </div>
+
+    <div class="card border-0 shadow-sm rounded-3">
+        <div class="card-body p-4">
+            <div asp-validation-summary="All" class="text-danger mb-4"></div>
+            
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <h5 class="mb-3 text-tq">Evaluation Details</h5>
+                    <dl class="row">
+                        <dt class="col-sm-4">Employee</dt>
+                        <dd class="col-sm-8">@Model.Evaluation.Employee.FullName</dd>
+                        
+                        <dt class="col-sm-4">Evaluation Group</dt>
+                        <dd class="col-sm-8">@Model.Evaluation.GroupEmployee.EvaluationGroup.Name</dd>
+                        
+                        <dt class="col-sm-4">Questionnaire</dt>
+                        <dd class="col-sm-8">@Model.Evaluation.Questionnaire.Title</dd>
+                        
+                        <dt class="col-sm-4">Date</dt>
+                        <dd class="col-sm-8">@Model.Evaluation.EvaluationDate.ToString("dd/MM/yyyy")</dd>
+                    </dl>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="alert alert-danger">
+                        <h5 class="alert-heading">
+                            <i class="bi bi-exclamation-triangle-fill me-2"></i>Warning!
+                        </h5>
+                        <p class="mb-0">
+                            Deleting this evaluation will permanently remove:
+                            <ul class="mb-0">
+                                <li>All @Model.Evaluation.Responses.Count responses</li>
+                                <li>All @Model.Evaluation.Results.Count results</li>
+                                <li>The evaluation record itself</li>
+                            </ul>
+                        </p>
+                        <hr>
+                        <p class="mb-0">This action cannot be undone.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <form method="post" id="deleteForm">
+                <div class="d-flex justify-content-end gap-2">
+                    <a asp-page="Index" class="btn btn-outline-secondary">
+                        <i class="bi bi-x-circle me-2"></i>Cancel
+                    </a>
+                    <button type="submit" class="btn btn-danger">
+                        <i class="bi bi-trash me-2"></i>Delete Evaluation
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    .text-tq {
+        color: #004b99 !important;
+    }
+</style>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $('#deleteForm').submit(function() {
+                $(this).find('button[type="submit"]').prop('disabled', true);
+                $(this).find('button[type="submit"]').html('<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Deleting...');
+                return true;
+            });
+        });
+    </script>
+} 

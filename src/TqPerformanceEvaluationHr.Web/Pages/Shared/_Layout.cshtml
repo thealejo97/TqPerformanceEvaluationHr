@@ -120,6 +120,32 @@
             text-decoration: underline;
             color: #003366;
         }
+
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+            border-radius: 0.5rem;
+        }
+
+        .dropdown-item {
+            padding: 0.6rem 1.2rem;
+            font-weight: 500;
+        }
+
+        .dropdown-item:hover {
+            background-color: rgba(0, 75, 153, 0.05);
+        }
+
+        .dropdown-item.active, 
+        .dropdown-item:active {
+            background-color: #004b99;
+        }
+
+        .dropdown-item i {
+            width: 1.5rem;
+            text-align: center;
+            margin-right: 0.5rem;
+        }
     </style>
 </head>
 <body class="d-flex flex-column h-100">
@@ -140,30 +166,74 @@
                             <i class="bi bi-house-door me-1"></i> Home
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link @(ViewContext.RouteData.Values["Page"].ToString().Contains("/EvaluationModels") ? "active" : "")" asp-page="/EvaluationModels/Index">
-                            <i class="bi bi-file-earmark-text me-1"></i> Evaluation Models
+                    
+                    <!-- Menú desplegable para Evaluations System -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle @(
+                            ViewContext.RouteData.Values["Page"].ToString().Contains("/EvaluationModels") ||
+                            ViewContext.RouteData.Values["Page"].ToString().Contains("/Questionnaires") ||
+                            ViewContext.RouteData.Values["Page"].ToString().Contains("/Evaluations") ||
+                            ViewContext.RouteData.Values["Page"].ToString().Contains("/GroupEmployees") ? "active" : "")" 
+                           href="#" id="navbarDropdownEval" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-clipboard-check me-1"></i> Evaluation System
                         </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownEval">
+                            <li>
+                                <a class="dropdown-item @(ViewContext.RouteData.Values["Page"].ToString().Contains("/EvaluationModels") ? "active" : "")" 
+                                   asp-page="/EvaluationModels/Index">
+                                    <i class="bi bi-file-earmark-text"></i>Evaluation Models
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item @(ViewContext.RouteData.Values["Page"].ToString().Contains("/Questionnaires") ? "active" : "")" 
+                                   asp-page="/Questionnaires/Index">
+                                    <i class="bi bi-card-checklist"></i>Questionnaires
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item @(ViewContext.RouteData.Values["Page"].ToString().Contains("/GroupEmployees") ? "active" : "")" 
+                                   asp-page="/GroupEmployees/Index">
+                                    <i class="bi bi-people-fill"></i>Group Assignments
+                                </a>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <a class="dropdown-item @(ViewContext.RouteData.Values["Page"].ToString().Contains("/Evaluations") ? "active" : "")" 
+                                   asp-page="/Evaluations/Index">
+                                    <i class="bi bi-clipboard-data"></i>Evaluations
+                                </a>
+                            </li>
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link @(ViewContext.RouteData.Values["Page"].ToString().Contains("/Questionnaires") ? "active" : "")" asp-page="/Questionnaires/Index">
-                            <i class="bi bi-card-checklist me-1"></i> Questionnaires
-                        </a> 
-                    </li>
+                    
                     <li class="nav-item">
                         <a class="nav-link @(ViewContext.RouteData.Values["Page"].ToString().Contains("/Reports") ? "active" : "")" asp-page="/Reports/ByPosition">
                             <i class="bi bi-bar-chart me-1"></i> Reports
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link @(ViewContext.RouteData.Values["Page"].ToString().Contains("/Positions") ? "active" : "")" asp-page="/Positions/Index">
-                            <i class="bi bi-briefcase me-1"></i> Positions
+                    
+                    <!-- Menú desplegable para Organization -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle @(
+                            ViewContext.RouteData.Values["Page"].ToString().Contains("/Positions") ||
+                            ViewContext.RouteData.Values["Page"].ToString().Contains("/Employees") ? "active" : "")" 
+                           href="#" id="navbarDropdownOrg" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-building me-1"></i> Organization
                         </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link @(ViewContext.RouteData.Values["Page"].ToString().Contains("/Employees") ? "active" : "")" asp-page="/Employees/Index">
-                            <i class="bi bi-people me-1"></i> Employees
-                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownOrg">
+                            <li>
+                                <a class="dropdown-item @(ViewContext.RouteData.Values["Page"].ToString().Contains("/Positions") ? "active" : "")" 
+                                   asp-page="/Positions/Index">
+                                    <i class="bi bi-briefcase"></i>Positions
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item @(ViewContext.RouteData.Values["Page"].ToString().Contains("/Employees") ? "active" : "")" 
+                                   asp-page="/Employees/Index">
+                                    <i class="bi bi-people"></i>Employees
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
                 <span class="navbar-text">

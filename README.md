@@ -6,14 +6,22 @@ Solución tecnológica para el proceso de evaluación de desempeño de Recursos 
 
 ## Arquitectura del Proyecto
 
-Este proyecto está desarrollado con **.NET 8**, utilizando **Clean Architecture**, **Razor Pages** como frontend y **PostgreSQL** como base de datos. La estructura sigue buenas prácticas y separación por capas:
+Este proyecto está desarrollado con **.NET 8**, utilizando **Clean Architecture**, **Razor Pages** como frontend y **PostgreSQL** como base de datos. La estructura sigue buenas prácticas y separación por capas siguiendo principios de Clean Architecture:
 ```
 src/
 ├── TqPerformanceEvaluationHr.Web           → Capa de presentación (Razor Pages)
-├── TqPerformanceEvaluationHr.Application   → Lógica de negocio (casos de uso, DTOs)
+├── TqPerformanceEvaluationHr.Application   → Lógica de negocio
 ├── TqPerformanceEvaluationHr.Domain        → Entidades y reglas del dominio
 ├── TqPerformanceEvaluationHr.Infrastructure→ Persistencia, EF Core, PostgreSQL
 ```
+
+Cada capa cumple con su rol específico:
+
+- **Domain**: contiene las entidades puras y relaciones, sin dependencias externas.
+- **Application**: orquesta la lógica, incluye DTOs, validaciones y servicios de aplicación.
+- **Infrastructure**: gestiona la persistencia con Entity Framework Core y la conexión a PostgreSQL.
+- **Web**: interfaz de usuario basada en Razor Pages, donde el usuario interactúa con el sistema.
+
 
 ## Tecnologías y herramientas
 
@@ -52,6 +60,26 @@ La cadena de conexión se encuentra en appsettings.Development.json dentro del p
 }
 ```
 
+
+### Funcionalidades
+
+La aplicación cuenta con CRUD completo para las siguientes entidades:
+
+* Evaluation Models
+
+* Questionnaires
+
+* Evaluations
+
+* Positions
+
+* Employees
+
+Cada sección tiene su propia interfaz en Razor Pages para crear, editar, eliminar y listar los registros.
+
+Adicionalmente cuenta con una sección dedicada a reportes, donde se muestra la información agregada por cargo, permitiendo visualizar:
+
+Esto permite medir el desempeño promedio por cargo y tomar decisiones basadas en datos.
 
 ## Autor
 

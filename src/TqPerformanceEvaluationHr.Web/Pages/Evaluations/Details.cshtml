@@ -1,0 +1,157 @@
+@page "{id:int}"
+@model TqPerformanceEvaluationHr.Web.Pages.Evaluations.DetailsModel
+@{
+    ViewData["Title"] = "Evaluation Details";
+}
+
+<div class="container-fluid py-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="fw-bold text-tq display-5">Evaluation Details</h1>
+            <p class="text-muted">Complete details of the selected evaluation</p>
+        </div>
+    </div>
+
+    <div class="mb-4">
+        <a class="btn btn-outline-secondary" asp-page="Index">
+            <i class="bi bi-arrow-left me-2"></i>Back to List
+        </a>
+        <a class="btn btn-outline-tq ms-2" asp-page="Edit" asp-route-id="@Model.Evaluation.Id">
+            <i class="bi bi-pencil-square me-2"></i>Edit
+        </a>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="card border-0 shadow-sm rounded-3 h-100">
+                <div class="card-header bg-tq-light py-3">
+                    <h5 class="mb-0 text-tq">General Information</h5>
+                </div>
+                <div class="card-body">
+                    <dl class="row mb-0">
+                        <dt class="col-sm-4">Employee</dt>
+                        <dd class="col-sm-8">@Model.Evaluation.Employee.FullName</dd>
+                        
+                        <dt class="col-sm-4">Position</dt>
+                        <dd class="col-sm-8">@Model.Evaluation.Employee.Position?.Name</dd>
+                        
+                        <dt class="col-sm-4">Evaluation Group</dt>
+                        <dd class="col-sm-8">@Model.Evaluation.GroupEmployee.EvaluationGroup.Name</dd>
+                        
+                        <dt class="col-sm-4">Questionnaire</dt>
+                        <dd class="col-sm-8">@Model.Evaluation.Questionnaire.Title</dd>
+                        
+                        <dt class="col-sm-4">Evaluation Model</dt>
+                        <dd class="col-sm-8">@Model.Evaluation.Questionnaire.EvaluationModel.Name</dd>
+                        
+                        <dt class="col-sm-4">Date</dt>
+                        <dd class="col-sm-8">@Model.Evaluation.EvaluationDate.ToString("dd/MM/yyyy")</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="card border-0 shadow-sm rounded-3 h-100">
+                <div class="card-header bg-tq-light py-3">
+                    <h5 class="mb-0 text-tq">Results</h5>
+                </div>
+                <div class="card-body">
+                    @if (Model.Evaluation.Results.Any())
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Qualitative Concept</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var result in Model.Evaluation.Results)
+                                    {
+                                        <tr>
+                                            <td>@result.QualitativeConcept</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-info mb-0">
+                            <i class="bi bi-info-circle me-2"></i>No results have been registered for this evaluation.
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-12">
+            <div class="card border-0 shadow-sm rounded-3">
+                <div class="card-header bg-tq-light py-3">
+                    <h5 class="mb-0 text-tq">Responses</h5>
+                </div>
+                <div class="card-body">
+                    @if (Model.Evaluation.Responses.Any())
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Question</th>
+                                        <th class="text-center" style="width: 120px;">Score</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var response in Model.Evaluation.Responses)
+                                    {
+                                        <tr>
+                                            <td>@response.Question.Text</td>
+                                            <td class="text-center">
+                                                <span class="badge bg-tq rounded-pill fs-6">@response.Score</span>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-info">
+                            <i class="bi bi-info-circle me-2"></i>No responses have been registered for this evaluation.
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .text-tq {
+        color: #004b99 !important;
+    }
+    
+    .bg-tq {
+        background-color: #004b99 !important;
+        color: white;
+    }
+    
+    .bg-tq-light {
+        background-color: rgba(0, 75, 153, 0.05);
+        border-bottom: none;
+    }
+    
+    .btn-outline-tq {
+        color: #004b99;
+        border-color: #004b99;
+    }
+    
+    .btn-outline-tq:hover {
+        background-color: #004b99;
+        border-color: #004b99;
+        color: white;
+    }
+</style> 
