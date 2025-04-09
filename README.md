@@ -30,12 +30,12 @@ src/
 ### Clona el repositorio y ejecutar la solución:
 
 ```
-git clone [<repo>](https://github.com/thealejo97/TqPerformanceEvaluationHr.git)
+git clone https://github.com/thealejo97/TqPerformanceEvaluationHr.git
 docker compose up --build
 ```
 ## Como ejecutar migraciones
 
-Cree un servicio que hace las migraciones en la db con docker, para ejecutarlo, despues de ejecutar el up se debe ejecutar
+Cree un servicio en docker que hace las migraciones en la db con docker, para ejecutarlo, despues de ejecutar el up se debe ejecutar
 ```
  docker compose up --build migrator
 ```

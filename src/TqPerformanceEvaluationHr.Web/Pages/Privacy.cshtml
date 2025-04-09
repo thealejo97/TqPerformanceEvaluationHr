@@ -1,8 +1,12 @@
 ﻿@page
-@model PrivacyModel
+@model IndexModel
 @{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = "Dashboard";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<h1>Panel de Evaluación de Desempeño</h1>
+
+<div class="list-group">
+    <a class="list-group-item list-group-item-action" href="/EvaluationModels">📋 Modelos Evaluativos</a>
+    <a class="list-group-item list-group-item-action" href="/EvaluationResults/ByPosition">📊 Calificaciones por Cargo</a>
+</div>

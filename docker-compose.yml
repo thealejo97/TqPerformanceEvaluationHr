@@ -19,7 +19,7 @@ services:
       dockerfile: ./src/TqPerformanceEvaluationHr.Web/Dockerfile
     container_name: tq-web
     ports:
-      - "5000:80"
+      - "5000:8080"
     depends_on:
       - db
     environment:
