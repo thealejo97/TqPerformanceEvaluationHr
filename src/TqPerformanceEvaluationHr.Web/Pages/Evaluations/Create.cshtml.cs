@@ -88,11 +88,24 @@ public class CreateModel : PageModel
             return Page();
         }
 
+        // Find the group employee
+        var groupEmployee = await _context.GroupEmployees
+            .FirstOrDefaultAsync(ge => ge.EmployeeId == Input.EmployeeId && 
+                                     ge.EvaluationGroup.EvaluationCycleId == Input.EvaluationCycleId);
+
+        if (groupEmployee == null)
+        {
+            ModelState.AddModelError("", "The employee is not assigned to any group in the selected evaluation cycle");
+            await LoadSelectListsAsync();
+            return Page();
+        }
+
         var evaluation = new Evaluation
         {
             EmployeeId = Input.EmployeeId,
+            GroupEmployeeId = groupEmployee.Id,
             QuestionnaireId = Input.QuestionnaireId,
-            EvaluationDate = Input.EvaluationDate
+            EvaluationDate = DateTime.SpecifyKind(Input.EvaluationDate, DateTimeKind.Utc)
         };
 
         _context.Evaluations.Add(evaluation);
@@ -112,11 +125,11 @@ public class CreateModel : PageModel
             .ToListAsync();
 
         EvaluationCycles = await _context.EvaluationCycles
-            .Where(c => c.IsActive)
-            .Select(c => new SelectListItem
+            .Where(ec => ec.IsActive)
+            .Select(ec => new SelectListItem
             {
-                Value = c.Id.ToString(),
-                Text = c.Year.ToString()
+                Value = ec.Id.ToString(),
+                Text = $"{ec.Year} ({ec.StartDate:dd/MM/yyyy} - {ec.EndDate:dd/MM/yyyy})"
             })
             .ToListAsync();
 
@@ -124,7 +137,7 @@ public class CreateModel : PageModel
             .Select(q => new SelectListItem
             {
                 Value = q.Id.ToString(),
-                Text = q.Title
+                Text = $"{q.Title} ({q.EvaluationModel.Name})"
             })
             .ToListAsync();
     }
