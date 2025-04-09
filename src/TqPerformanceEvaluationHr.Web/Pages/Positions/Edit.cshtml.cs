@@ -20,12 +20,14 @@ public class EditModel : PageModel
 
     public async Task<IActionResult> OnGetAsync(int id)
     {
-        Position = await _context.Positions.FindAsync(id);
-        if (Position == null)
+        var position = await _context.Positions.FindAsync(id);
+        
+        if (position == null)
         {
             return NotFound();
         }
 
+        Position = position;
         return Page();
     }
 

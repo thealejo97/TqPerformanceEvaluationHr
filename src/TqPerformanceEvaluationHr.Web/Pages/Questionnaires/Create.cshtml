@@ -1,0 +1,92 @@
+@page
+@model TqPerformanceEvaluationHr.Web.Pages.Questionnaires.CreateModel
+@{
+    ViewData["Title"] = "Create Questionnaire";
+}
+
+<h1>Create Questionnaire</h1>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <form method="post" id="createQuestionnaireForm">
+                    <div asp-validation-summary="All" class="text-danger mb-3"></div>
+                    
+                    <div class="mb-3">
+                        <label asp-for="Title" class="form-label">Title</label>
+                        <input asp-for="Title" class="form-control" required />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label asp-for="EvaluationModelId" class="form-label">Evaluation Model</label>
+                        <select asp-for="EvaluationModelId" class="form-select" asp-items="Model.EvaluationModels" required>
+                            <option value="">-- Select an evaluation model --</option>
+                        </select>
+                        <span asp-validation-for="EvaluationModelId" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label asp-for="PositionId" class="form-label">Position</label>
+                        <select asp-for="PositionId" class="form-select" asp-items="Model.Positions" required>
+                            <option value="">-- Select a position --</option>
+                        </select>
+                        <span asp-validation-for="PositionId" class="text-danger"></span>
+                    </div>
+                    
+                    <hr />
+                    
+                    <div class="mb-3">
+                        <p class="text-muted">You can add questions after creating the questionnaire.</p>
+                    </div>
+                    
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+                        <button type="submit" class="btn btn-primary" id="submitButton">Create</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Prevenir múltiples envíos
+            $('#createQuestionnaireForm').on('submit', function(e) {
+                console.log('Formulario enviado');
+                
+                // Validar manualmente
+                var title = $('#Title').val();
+                var evalModelId = $('#EvaluationModelId').val();
+                var positionId = $('#PositionId').val();
+                
+                console.log(`Valores: Title=${title}, EvalModelId=${evalModelId}, PositionId=${positionId}`);
+                
+                if (!title || !evalModelId || !positionId) {
+                    e.preventDefault();
+                    alert('Por favor, complete todos los campos requeridos');
+                    return false;
+                }
+                
+                $('#submitButton').prop('disabled', true).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Creating...');
+                return true;
+            });
+            
+            // Validación adicional para los selects
+            $('#EvaluationModelId, #PositionId').on('change', function() {
+                console.log('Valor seleccionado: ' + $(this).val());
+                
+                if ($(this).val() === '') {
+                    $(this).addClass('is-invalid');
+                } else {
+                    $(this).removeClass('is-invalid').addClass('is-valid');
+                }
+            });
+        });
+    </script>
+}

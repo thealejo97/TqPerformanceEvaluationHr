@@ -1,0 +1,53 @@
+@page
+@model TqPerformanceEvaluationHr.Web.Pages.Questionnaires.IndexModel
+@{
+    ViewData["Title"] = "Questionnaires";
+}
+
+<h1>Questionnaires</h1>
+
+<p>
+    <a class="btn btn-primary" asp-page="Create">Create New</a>
+</p>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Evaluation Model</th>
+                    <th>Position</th>
+                    <th>Questions</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Questionnaires)
+                {
+                    <tr>
+                        <td>@item.Title</td>
+                        <td>@item.EvaluationModel.Name</td>
+                        <td>@item.Position.Name</td>
+                        <td>
+                            <span class="badge bg-info rounded-pill">@item.Questions.Count</span>
+                        </td>
+                        <td>
+                            <a asp-page="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Edit</a>
+                            <a asp-page="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Details</a>
+                            <a asp-page="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@if (!Model.Questionnaires.Any())
+{
+    <div class="alert alert-info mt-4">
+        <i class="bi bi-info-circle me-2"></i>
+        No questionnaires have been created yet. Use the "Create New" button to add one.
+    </div>
+} 

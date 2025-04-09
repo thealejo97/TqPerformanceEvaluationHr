@@ -74,8 +74,32 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUG9zaXRpb25zL0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/src/src/TqPerformanceEvaluationHr.Web/Pages/Questionnaires/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUXVlc3Rpb25uYWlyZXMvQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/src/src/TqPerformanceEvaluationHr.Web/Pages/Questionnaires/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUXVlc3Rpb25uYWlyZXMvRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/src/src/TqPerformanceEvaluationHr.Web/Pages/Questionnaires/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUXVlc3Rpb25uYWlyZXMvRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/src/src/TqPerformanceEvaluationHr.Web/Pages/Questionnaires/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUXVlc3Rpb25uYWlyZXMvRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/src/src/TqPerformanceEvaluationHr.Web/Pages/Questionnaires/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUXVlc3Rpb25uYWlyZXMvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/src/src/TqPerformanceEvaluationHr.Web/Pages/Reports/ByPosition.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUmVwb3J0cy9CeVBvc2l0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/src/src/TqPerformanceEvaluationHr.Web/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/src/src/TqPerformanceEvaluationHr.Web/Pages/_ViewImports.cshtml]

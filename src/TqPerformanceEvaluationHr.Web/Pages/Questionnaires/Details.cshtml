@@ -1,0 +1,64 @@
+@page "{id:int}"
+@model TqPerformanceEvaluationHr.Web.Pages.Questionnaires.DetailsModel
+@{
+    ViewData["Title"] = "Questionnaire Details";
+}
+
+<h1>Questionnaire Details</h1>
+
+<div class="mb-3">
+    <a asp-page="Index" class="btn btn-secondary">Back to List</a>
+    <a asp-page="Edit" asp-route-id="@Model.Questionnaire.Id" class="btn btn-primary">Edit</a>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card shadow-sm">
+            <div class="card-header bg-light">
+                <h5 class="mb-0">@Model.Questionnaire.Title</h5>
+            </div>
+            <div class="card-body">
+                <div class="mb-4">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <div class="text-muted small">Evaluation Model</div>
+                                <div class="fw-bold">@Model.Questionnaire.EvaluationModel.Name</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <div class="text-muted small">Position</div>
+                                <div class="fw-bold">@Model.Questionnaire.Position.Name</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h5 class="card-title mb-3">Questions (@Model.Questionnaire.Questions.Count)</h5>
+                
+                @if (Model.Questionnaire.Questions.Any())
+                {
+                    <div class="list-group">
+                        @foreach (var question in Model.Questionnaire.Questions)
+                        {
+                            <div class="list-group-item">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <p class="mb-1">@question.Text</p>
+                                    <small class="text-muted">ID: @question.Id</small>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <div class="alert alert-info">
+                        <i class="bi bi-info-circle me-2"></i>
+                        This questionnaire has no questions.
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div> 

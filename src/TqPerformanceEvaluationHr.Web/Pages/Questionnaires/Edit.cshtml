@@ -1,0 +1,138 @@
+@page "{id:int}"
+@model TqPerformanceEvaluationHr.Web.Pages.Questionnaires.EditModel
+@{
+    ViewData["Title"] = "Edit Questionnaire";
+}
+
+<h1>Edit Questionnaire</h1>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Questionnaire.Id" />
+                    
+                    <div class="mb-3">
+                        <label asp-for="Questionnaire.Title" class="form-label">Title</label>
+                        <input asp-for="Questionnaire.Title" class="form-control" />
+                        <span asp-validation-for="Questionnaire.Title" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label asp-for="Questionnaire.EvaluationModelId" class="form-label">Evaluation Model</label>
+                        <select asp-for="Questionnaire.EvaluationModelId" class="form-select" asp-items="Model.EvaluationModels">
+                            <option value="">-- Select an evaluation model --</option>
+                        </select>
+                        <span asp-validation-for="Questionnaire.EvaluationModelId" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label asp-for="Questionnaire.PositionId" class="form-label">Position</label>
+                        <select asp-for="Questionnaire.PositionId" class="form-select" asp-items="Model.Positions">
+                            <option value="">-- Select a position --</option>
+                        </select>
+                        <span asp-validation-for="Questionnaire.PositionId" class="text-danger"></span>
+                    </div>
+                    
+                    <hr />
+                    
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5>Questions (@Model.Questionnaire.Questions.Count)</h5>
+                            <a href="javascript:void(0)" class="btn btn-sm btn-outline-primary" id="addQuestionBtn">
+                                <i class="bi bi-plus-circle"></i> Add Question
+                            </a>
+                        </div>
+                        
+                        <div id="questionsContainer">
+                            @if (Model.Questionnaire.Questions.Any())
+                            {
+                                var questionList = Model.Questionnaire.Questions.ToList();
+                                for (var i = 0; i < questionList.Count; i++)
+                                {
+                                    var question = questionList[i];
+                                    <div class="card mb-2">
+                                        <div class="card-body py-2">
+                                            <input type="hidden" name="Questionnaire.Questions[@i].Id" value="@question.Id" />
+                                            <input type="hidden" name="Questionnaire.Questions[@i].QuestionnaireId" value="@question.QuestionnaireId" />
+                                            
+                                            <div class="input-group">
+                                                <input name="Questionnaire.Questions[@i].Text" class="form-control" placeholder="Question text" value="@question.Text" />
+                                                <button type="button" class="btn btn-outline-danger remove-question">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                            </div>
+                                            <span class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                <div class="alert alert-info">
+                                    <i class="bi bi-info-circle me-2"></i>
+                                    No questions have been added yet. Use the "Add Question" button to add one.
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function() {
+            // Add new question
+            $('#addQuestionBtn').click(function() {
+                const index = $('#questionsContainer .card').length;
+                const newQuestion = `
+                    <div class="card mb-2">
+                        <div class="card-body py-2">
+                            <input type="hidden" name="Questionnaire.Questions[${index}].Id" value="0" />
+                            <input type="hidden" name="Questionnaire.Questions[${index}].QuestionnaireId" value="${$('#Questionnaire_Id').val()}" />
+                            
+                            <div class="input-group">
+                                <input name="Questionnaire.Questions[${index}].Text" class="form-control" placeholder="Question text" />
+                                <button type="button" class="btn btn-outline-danger remove-question">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                $('#questionsContainer').append(newQuestion);
+                
+                // Remove alert if exists
+                $('#questionsContainer .alert').remove();
+            });
+            
+            // Remove question
+            $(document).on('click', '.remove-question', function() {
+                $(this).closest('.card').remove();
+                
+                // If no questions left, show alert
+                if ($('#questionsContainer .card').length === 0) {
+                    const alert = `
+                        <div class="alert alert-info">
+                            <i class="bi bi-info-circle me-2"></i>
+                            No questions have been added yet. Use the "Add Question" button to add one.
+                        </div>
+                    `;
+                    $('#questionsContainer').append(alert);
+                }
+            });
+        });
+    </script>
+} 

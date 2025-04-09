@@ -57,14 +57,11 @@ public class EditModel : PageModel
 
             if (empleadoExistente == null)
             {
-                Console.WriteLine("🔴 Empleado no encontrado");
                 ModelState.AddModelError(string.Empty, "No se encontró el empleado");
                 Positions = new SelectList(_context.Positions.ToList(), "Id", "Name");
                 return Page();
             }
 
-            Console.WriteLine("🔴 Empleado encontrado, actualizando datos");
-            
             
             _context.Update(Employee);
             await _context.SaveChangesAsync();
