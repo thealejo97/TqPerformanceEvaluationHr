@@ -10,8 +10,11 @@ Este proyecto está desarrollado con **.NET 8**, utilizando **Clean Architecture
 
 src/
 ├── TqPerformanceEvaluationHr.Web           → Capa de presentación (Razor Pages)
+
 ├── TqPerformanceEvaluationHr.Application   → Lógica de negocio (casos de uso, DTOs)
+
 ├── TqPerformanceEvaluationHr.Domain        → Entidades y reglas del dominio
+
 ├── TqPerformanceEvaluationHr.Infrastructure→ Persistencia, EF Core, PostgreSQL
 
 
