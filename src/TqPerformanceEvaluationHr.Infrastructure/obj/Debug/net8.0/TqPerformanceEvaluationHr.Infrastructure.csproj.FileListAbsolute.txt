@@ -16,3 +16,5 @@ C:\Users\usuario\Desktop\tq\TqPerformanceEvaluationHr\src\TqPerformanceEvaluatio
 C:\Users\usuario\Desktop\tq\TqPerformanceEvaluationHr\src\TqPerformanceEvaluationHr.Infrastructure\obj\Debug\net8.0\refint\TqPerformanceEvaluationHr.Infrastructure.dll
 C:\Users\usuario\Desktop\tq\TqPerformanceEvaluationHr\src\TqPerformanceEvaluationHr.Infrastructure\obj\Debug\net8.0\TqPerformanceEvaluationHr.Infrastructure.pdb
 C:\Users\usuario\Desktop\tq\TqPerformanceEvaluationHr\src\TqPerformanceEvaluationHr.Infrastructure\obj\Debug\net8.0\ref\TqPerformanceEvaluationHr.Infrastructure.dll
+C:\Users\usuario\Desktop\tq\TqPerformanceEvaluationHr\src\TqPerformanceEvaluationHr.Infrastructure\bin\Debug\net8.0\TqPerformanceEvaluationHr.Infrastructure.runtimeconfig.json
+C:\Users\usuario\Desktop\tq\TqPerformanceEvaluationHr\src\TqPerformanceEvaluationHr.Infrastructure\obj\Debug\net8.0\TqPerformanceEvaluationHr.Infrastructure.genruntimeconfig.cache
