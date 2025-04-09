@@ -1,0 +1,18 @@
+@page "{id:int}"
+@model TqPerformanceEvaluationHr.Web.Pages.EvaluationModels.DeleteModel
+@{
+    ViewData["Title"] = "Eliminar Modelo Evaluativo";
+}
+
+<h1>¿Estás seguro que deseas eliminar este modelo?</h1>
+
+<div>
+    <h4>@Model.EvaluationModel.Name</h4>
+    <p>@Model.EvaluationModel.Description</p>
+
+    <form method="post">
+        <input type="hidden" asp-for="EvaluationModel.Id" />
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <a asp-page="Index" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>

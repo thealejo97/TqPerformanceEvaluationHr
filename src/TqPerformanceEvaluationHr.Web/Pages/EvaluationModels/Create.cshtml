@@ -1,0 +1,25 @@
+@page
+@model TqPerformanceEvaluationHr.Web.Pages.EvaluationModels.CreateModel
+@{
+    ViewData["Title"] = "Crear Modelo Evaluativo";
+}
+
+<h1>Crear Modelo Evaluativo</h1>
+
+<form method="post">
+    <div class="mb-3">
+        <label asp-for="EvaluationModel.Name" class="form-label"></label>
+        <input asp-for="EvaluationModel.Name" class="form-control" />
+        <span asp-validation-for="EvaluationModel.Name" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="EvaluationModel.Description" class="form-label"></label>
+        <textarea asp-for="EvaluationModel.Description" class="form-control"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a asp-page="Index" class="btn btn-secondary">Cancelar</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

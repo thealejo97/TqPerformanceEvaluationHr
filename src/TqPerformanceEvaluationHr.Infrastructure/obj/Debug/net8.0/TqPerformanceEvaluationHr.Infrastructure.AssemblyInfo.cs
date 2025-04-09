@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TqPerformanceEvaluationHr.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0c4b24a496b4a40812843f7cd672112e580e580e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e93fb2328016759bab745c6350c6cf7a61524d3c")]
 [assembly: System.Reflection.AssemblyProductAttribute("TqPerformanceEvaluationHr.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TqPerformanceEvaluationHr.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
